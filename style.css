@@ -9,7 +9,7 @@
 /* General Page Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--light-gray); /* Light Gray Background */
+    background-color: var(--light-gray); 
     color: #333;
 }
 
@@ -37,8 +37,8 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 .sidebar .nav-item a i {
-    margin-right: 10px; /* 给图标右边加点空隙 */
-    font-size: 18px; /* 可以设置图标的大小 */
+    margin-right: 10px;
+    font-size: 18px; 
 }
 
 
@@ -51,7 +51,7 @@ body {
 
 /* Main Content Styles */
 main {
-    margin-left: 260px; /* Add space for sidebar */
+    margin-left: 260px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
@@ -89,11 +89,11 @@ h1, h2, h3 {
 }
 
 .btn-teal:hover {
-    background-color: #006666; /* Darker Teal Blue */
+    background-color: #006666; 
 }
 
 .btn-warning {
-    background-color: #ffcc00; /* Gold for In Progress */
+    background-color: #ffcc00; 
     border-color: #ffcc00;
 }
 
@@ -102,7 +102,7 @@ h1, h2, h3 {
 }
 
 .btn-success {
-    background-color: #28a745; /* Green for Ready for QA */
+    background-color: #28a745; 
     border-color: #28a745;
 }
 

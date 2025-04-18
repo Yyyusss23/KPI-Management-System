@@ -1,0 +1,122 @@
+/* Define Color Variables */
+:root {
+    --teal-blue: #008080;
+    --light-blue: #add8e6;
+    --light-gray: #f0f0f0;
+    --teal-dark: #004d4d;  
+}
+
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--light-gray); /* Light Gray Background */
+    color: #333;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: #73a9a9;  
+    color: black;
+    padding-top: 20px;
+    height: 100vh;
+    position: fixed;
+    width: 250px;
+    top: 0;
+    left: 0;
+}
+
+
+
+.sidebar .nav-item a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.sidebar .nav-item a i {
+    margin-right: 10px; /* 给图标右边加点空隙 */
+    font-size: 18px; /* 可以设置图标的大小 */
+}
+
+
+.sidebar .nav-item a:hover,
+.sidebar .nav-item a.active {
+    background-color: var(--light-blue);
+    color: black; 
+    border-radius: 5px;
+}
+
+/* Main Content Styles */
+main {
+    margin-left: 260px; /* Add space for sidebar */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--teal-blue);
+  }
+  
+/* Card Styles */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: var(--teal-blue);
+}
+
+.card-text {
+    font-size: 14px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+/* Button Styles */
+.btn-teal {
+    background-color: var(--teal-blue);
+    border-color: var(--teal-blue);
+}
+
+.btn-teal:hover {
+    background-color: #006666; /* Darker Teal Blue */
+}
+
+.btn-warning {
+    background-color: #ffcc00; /* Gold for In Progress */
+    border-color: #ffcc00;
+}
+
+.btn-warning:hover {
+    background-color: darken(#ffcc00, 10%);
+}
+
+.btn-success {
+    background-color: #28a745; /* Green for Ready for QA */
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: darken(#28a745, 10%);
+}
+
+/* Page Text Colors */
+.text-teal {
+    color: var(--teal-blue);
+}
+
+.status-title {
+    color: var(--teal-blue);
+    margin-bottom: 5px;
+    font-weight: 600;
+}

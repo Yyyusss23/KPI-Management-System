@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KPI Management System</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <!-- FontAwesome for icons -->
+    <link href="https://scdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+
+    <!-- External CSS file for custom styles -->
+    <link rel="stylesheet" href="style.css"> <!-- Make sure style.css is in the same folder as your HTML file -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <!-- LOGO 区块 -->
+                    <img src="logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
+
+                    <ul class="nav flex-column">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">
+                                    <i class="fas fa-home"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-tasks"></i> My KPIs(Staff)/KPI Management(Manager)
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-file-upload"></i> Submit Evidence
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-comments"></i> Comments
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-user"></i> Profile
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                            </li>
+
+                        </ul>
+                </div>
+            </nav>
+
+
+
+            <!-- Main Content -->
+            <!-- Dashboard Main Page -->
+            <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
+                <h1 class="mt-4">KPI Task Management Dashboard</h1>
+                <p class="mb-4">Welcome to the dashboard where you can manage or view your KPIs based on your role.</p>
+
+                <!-- ============================ 👤 STAFF Dashboard Section (Only shown to staff users)============================= -->
+                <div id="staff-dashboard">
+                    <h4 class="mb-3 text-teal">My Assigned KPIs</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">KPI: Monthly Report</h5>
+                                    <p class="card-text">Due: 2024-08-15</p>
+                                    <a href="#" class="btn btn-warning btn-sm">Update Progress</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">KPI: Upload SOP Evidence</h5>
+                                    <p class="card-text">Due: 2024-08-20</p>
+                                    <a href="#" class="btn btn-secondary btn-sm">Upload File</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Staff Dashboard Charts -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">KPI Progress Overview</h5>
+                                <canvas id="staffProgressChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">KPI Score Trend</h5>
+                                <canvas id="staffScoreTrendChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ============================👨‍💼 MANAGER Dashboard Section (Only shown to manager users)============================= -->
+                <div id="manager-dashboard">
+                    <h4 class="mb-3 text-teal">Team KPI Overview</h4>
+
+                    <!-- 状态统计区块 -->
+                    <div class="row text-center mb-4">
+                        <div class="col-md-3">
+                            <h5 class="status-title">Not Started</h5><span class="badge bg-secondary">3</span>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="status-title">In Progress</h5><span class="badge bg-warning text-dark">5</span>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="status-title">Waiting Upload</h5><span class="badge bg-info text-dark">2</span>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="status-title">Ready for QA</h5><span class="badge bg-success">4</span>
+                        </div>
+                    </div>
+
+                    <!-- 功能卡片区块 -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Assign KPIs</h5>
+                                    <p class="card-text">Assign new KPIs to your staff.</p>
+                                    <a href="#" class="btn btn-primary btn-sm">Assign</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Verify Submissions</h5>
+                                    <p class="card-text">View and verify submitted KPI evidence.</p>
+                                    <a href="#" class="btn btn-success btn-sm">Verify</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Manager Visualization -->
+                    <div class="row mt-4">
+                        <!-- KPI 状态饼图 -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">KPI Status Distribution</h5>
+                                    <canvas id="managerKpiStatusChart" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 员工得分柱状图 -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Average KPI Scores by Staff</h5>
+                                    <canvas id="managerKpiChart" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    <script>
+        // Staff KPI Progress Chart
+        new Chart(document.getElementById('staffProgressChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'In Progress', 'Not Started'],
+                datasets: [{
+                    data: [60, 25, 15],
+                    backgroundColor: ['#28a745', '#ffc107', '#dee2e6']
+                }]
+            }
+        });
+
+        // Staff Score Trend Line Chart
+        new Chart(document.getElementById('staffScoreTrendChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                datasets: [{
+                    label: 'KPI Score',
+                    data: [70, 75, 80, 78, 85],
+                    borderColor: '#008080',
+                    fill: false,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Manager KPI Status Chart
+        new Chart(document.getElementById('managerKpiStatusChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Not Started', 'In Progress', 'Waiting Upload', 'Ready for QA'],
+                datasets: [{
+                    data: [3, 5, 2, 4],
+                    backgroundColor: ['#adb5bd', '#ffc107', '#0dcaf0', '#28a745']
+                }]
+            }
+        });
+
+        // Manager Average KPI Score by Staff
+        new Chart(document.getElementById('managerKpiChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Alice', 'Bob', 'Charlie', 'Diana'],
+                datasets: [{
+                    label: 'Average Score',
+                    data: [85, 72, 90, 66],
+                    backgroundColor: '#008080'
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

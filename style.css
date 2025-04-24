@@ -120,3 +120,23 @@ h1, h2, h3 {
     margin-bottom: 5px;
     font-weight: 600;
 }
+
+.form-teal label {
+    color: var(--teal-blue);
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.form-teal input,
+.form-teal textarea {
+    border: 1px solid var(--teal-blue);
+    font-family: Arial, sans-serif;
+}
+
+.sidebar .nav-item a:hover,
+.sidebar .nav-item a.active {
+    background-color: var(--light-blue);
+    color: black;
+    border-radius: 5px;
+}
+

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>View KPIs</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styleAssign.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <img src="logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-home"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="assignKpi.html">
+                                <i class="fas fa-plus-circle"></i> Assign KPI
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="viewkpi.html">
+                                <i class="fas fa-eye"></i> View KPIs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-10 ms-sm-auto col-lg-10 px-4">
+                <h1 class="mt-4">View KPIs</h1>
+
+                <!-- Filters -->
+                <div class="row g-3 mt-3 mb-4">
+                    <div class="col-md-4">
+                        <input type="text" id="filterStaff" class="form-control" placeholder="Filter by Staff Name">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="filterDepartment" class="form-control" placeholder="Filter by Department">
+                    </div>
+                    <div class="col-md-4">
+                        <select id="filterStatus" class="form-select">
+                            <option value="">Filter by Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="verified">Verified</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- KPI List -->
+                <div id="viewKpiList" class="row g-4">
+                    <!-- KPI cards will be inserted here -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- External JS -->
+    <script src="viewkpi.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Review Evidence</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <!-- FontAwesome for icons -->
+    <link href="https://scdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+
+    <!-- External CSS file for custom styles -->
+    <link rel="stylesheet" href="style.css"> <!-- Make sure style.css is in the same folder as your HTML file -->
+    <link rel="stylesheet" href="styleRevEvi.css"> <!-- Make sure style.css is in the same folder as your HTML file -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <!-- LOGO block -->
+                    <img src="logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
+
+                    <ul class="nav flex-column">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="Dashboard.html">
+                                    <i class="fas fa-home"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="assignKpi.html">
+                                    <i class="fas fa-plus-circle"></i> Assign KPI
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="viewkpi.html">
+                                    <i class="fas fa-eye"></i> View KPIs
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-user"></i> Profile
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+            </nav>
+
+            <!-- Review Evidence -->
+
+            <main class="col-md-10 ms-sm-auto col-lg-10 px-4">
+                <h1 class="mt-4">Evidence</h1>
+                <div class="ReviewEvidence">
+                    <div class="ReviewEvidence-Columns">
+                        <!-- First Column: Title to Due -->
+                        <div class="ReviewEvidence-Left">
+                            <div class="RevEvi-Title">
+                                <h5 class="mb-3 text-teal">KPI Title: </h5>
+                                <h5 class="mb-3 text-teal-dark">Increase sales by 20%</h5>
+                            </div>
+                            <div class="RevEvi-Desc">
+                                <h5 class="mb-3 text-teal">Description: </h5>
+                                <h5 class="mb-3 text-teal-dark">Get 20 orders!</h5>
+                            </div>
+                            <div class="RevEvi-AssignedTo">
+                                <h5 class="mb-3 text-teal">Assigned to: </h5>
+                                <h5 class="mb-3 text-teal-dark">Harry Potter (S11205)</h5>
+                            </div>
+                            <div class="RevEvi-SubmitDate">
+                                <h5 class="mb-3 text-teal">Submitted on: </h5>
+                                <h5 class="mb-3 text-teal-dark">N/A</h5>
+                            </div>
+                            <div class="RevEvi-Due">
+                                <h5 class="mb-3 text-teal">Due: </h5>
+                                <h5 class="mb-3 text-teal-dark">N/A</h5>
+                            </div>
+                        </div>
+                
+                        <!-- Second Column: Status to GvA -->
+                        <div class="ReviewEvidence-Right">
+                            <div class="RevEvi-Status">
+                                <h5 class="mb-3 text-teal">Status: </h5>
+                                <h5 class="mb-3 text-teal-dark">Submitted on time</h5>
+                            </div>
+                            <div class="RevEvi-Evidence">
+                                <h5 class="mb-3 text-teal">Evidence: </h5>
+                                <h5 class="mb-3 text-teal-dark">example.pdf</h5>
+                            </div>
+                            <div class="RevEvi-Comment">
+                                <h5 class="mb-3 text-teal">Comment by staff: </h5>
+                                <h5 class="mb-3 text-teal-dark">I've done my work, please check.</h5>
+                            </div>
+                            <div class="RevEvi-GvA">
+                                <h5 class="mb-3 text-teal">GvA: </h5>
+                                <h5 class="mb-3 text-teal-dark" id="gva-actual">21</h5>
+                                <h5 class="mb-3 text-teal-dark" id="gva-target">/20</h5>
+                                <button id="Btn-GvA-Edit">EDIT</button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Feedback Section (Full Width) -->
+                    <div class="RevEvi-Feedback">
+                        <label for="kpiDescription" class="mb-3 text-teal">Feedback:</label>
+                        <textarea class="form-control" id="RevEvi-Feedback-text" required></textarea>
+                    </div>
+                </div>                
+
+                <div class="ReviewEvidenceBtns">
+                    <a href="viewKpi.html">
+                        <button id="Btn-RevEvi-APPROVE">APPROVE</button>
+                    </a>
+                    <a href="viewKpi.html">
+                        <button id="Btn-RevEvi-REJECT">REJECT</button>
+                    </a>
+                    <a href="viewKpi.html">
+                        <button id="Btn-RevEvi-CANCEL">CANCEL</button>
+                    </a>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="RevEvi.js"></script>
+</body>
+</html>

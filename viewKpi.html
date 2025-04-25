@@ -38,7 +38,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewkpi.html">
+                            <a class="nav-link active " href="viewkpi.html">
+                                <!-- nav-link active for gives light blue background-->
                                 <i class="fas fa-eye"></i> View KPIs
                             </a>
                         </li>
@@ -67,13 +68,56 @@
                     </div>
                 </div>
 
-                <!-- KPI List -->
-                <div id="viewKpiList" class="row g-4">
-                    <!-- KPI cards will be inserted here -->
-                </div>
-            </main>
-        </div>
-    </div>
+                <!-- KPI Table -->
+<div class="table-responsive">
+    <table class="kpi-table" id="kpiTable">
+        <thead>
+            <tr>
+                <th>KPI Title</th>
+                <th>Description</th>
+                <th>Staff Name</th>
+                <th>Department</th>
+                <th>Target Value</th>
+                <th>Due Date</th>
+                <th>Performance Indicators</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Customer Satisfaction</td>
+                <td>Improve customer support ratings.</td>
+                <td>Ainul Husna</td>
+                <td>Customer Service</td>
+                <td>90%</td>
+                <td>2025-06-30</td>
+                <td>CSAT survey scores</td>
+                <td><span class="badge bg-warning text-dark">Pending</span></td>
+            </tr>
+            <tr>
+                <td>Website Uptime</td>
+                <td>Maintain 99.9% uptime for Q2.</td>
+                <td>Haziq Rahman</td>
+                <td>IT Department</td>
+                <td>99.9%</td>
+                <td>2025-06-30</td>
+                <td>Server monitoring logs</td>
+                <td><span class="badge bg-success">Verified</span></td>
+            </tr>
+            <tr>
+                <td>Sales Growth</td>
+                <td>Increase sales revenue by 15%.</td>
+                <td>Siti Nurhaliza</td>
+                <td>Sales</td>
+                <td>+15%</td>
+                <td>2025-09-30</td>
+                <td>Monthly sales report</td>
+                <td><span class="badge bg-warning text-dark">Pending</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 
     <!-- External JS -->
     <script src="viewkpi.js"></script>

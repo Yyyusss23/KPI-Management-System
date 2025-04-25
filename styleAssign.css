@@ -157,5 +157,36 @@ h1, h2, h3 {
     font-size: 1.1rem;
     color: #444;
     margin-bottom: 8px;
-    
+
+}
+
+/* KPI Table Styles */
+.kpi-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.kpi-table thead {
+    background-color: var(--teal-blue);
+    color: white;
+}
+
+.kpi-table th,
+.kpi-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.kpi-table tbody tr:hover {
+    background-color: var(--light-blue);
+}
+
+.kpi-table tbody tr:last-child td {
+    border-bottom: none;
 }

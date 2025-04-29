@@ -38,14 +38,14 @@
         },
         {
             id: "4",
-            title: "Instagram Post Like",
-            description: "Get a total of 1000 likes on our main Instagram post",
-            target: "1000 likes",
-            progress: "500 likes",
-            completion: "50%",
+            title: "Customer Feedback Survey",
+            description: "Collect 300 feedback surveys from customers",
+            target: "300 surveys",
+            progress: "0 surveys",
+            completion: "0%",
             startDate: "2025-04-06",
             dueDate: "2025-08-31",
-            status: "In Progress"
+            status: "Not Started"
         },
         {
             id: "5",

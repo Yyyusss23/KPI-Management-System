@@ -97,10 +97,10 @@
                     const kpiProgressChart = new Chart(ctx, {
                         type: 'doughnut',
                         data: {
-                            labels: ['Completed', 'Remaining'],
+                            labels: ['Completed', 'In Progress', 'Not Started'],
                             datasets: [{
-                                data: [59.12, 40.88], // 59.12% completed example
-                                backgroundColor: ['#28a745', '#e0e0e0'],
+                                data: [59.12, 20.88, 20], // 59.12% completed example
+                                backgroundColor: ['#28a745', '#ffc107', '#dee2e6'],
                                 borderWidth: 1
                             }]
                         },
@@ -126,73 +126,98 @@
                 <h2 class="mt-4 ms-1">KPI List</h1>
                 
                 <!-- KPI Block List -->
-                <div class="kpi-list-box mt-4 ms-2">
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-
-                        <!-- Block 1 -->
-                        <a href="StaffKPIDetail.html?id=1" class="text-decoration-none text-dark">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Increase Website Traffic</h5>
+                        <div class="kpi-list-box mt-4 ms-2">
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                          
+                              <!-- Block 1 -->
+                              <div class="col">
+                                <div class="card h-100">
+                                  <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">
+                                      <a href="StaffKPIDetail.html?id=1" class="text-decoration-none card-title">Increase Website Traffic</a>
+                                    </h5>
                                     <p><strong>Target:</strong> 30% increase</p>
                                     <p><strong>Progress:</strong> 10%</p>
                                     <p><strong>Percentage Completion:</strong> 33.33%</p>
                                     <p><strong>Status:</strong> In Progress</p>
+                                    <div class="mt-auto text-end">
+                                      <a href="StaffKPIDetail.html?id=1" class="btn btn-warning btn-sm">Update Progress</a>
+                                    </div>
+                                  </div>
                                 </div>
-                            </div>
-                        </a>
-
-                        <!-- Block 2 -->
-                        <a href="StaffKPIDetail.html?id=2" class="text-decoration-none text-dark">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Customer Satisfaction Score</h5>
+                              </div>
+                          
+                              <!-- Block 2 -->
+                              <div class="col">
+                                <div class="card h-100">
+                                  <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">
+                                      <a href="StaffKPIDetail.html?id=2" class="text-decoration-none card-title">Customer Satisfaction Score</a>
+                                    </h5>
                                     <p><strong>Target:</strong> 85%</p>
                                     <p><strong>Progress:</strong> 60%</p>
                                     <p><strong>Percentage Completion:</strong> 70.59%</p>
                                     <p><strong>Status:</strong> In Progress</p>
+                                    <div class="mt-auto text-end">
+                                      <a href="StaffKPIDetail.html?id=2" class="btn btn-warning btn-sm">Update Progress</a>
+                                    </div>
+                                  </div>
                                 </div>
-                            </div>
-                        </a>
+                              </div>
 
                         <!-- Block 3 -->
-                        <a href="StaffKPIDetail.html?id=3" class="text-decoration-none text-dark">
+                        <div class="col">
                             <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Weekly Content Delivery</h5>
-                                    <p><strong>Target:</strong> 12 posts</p>
-                                    <p><strong>Progress:</strong> 5 posts</p>
-                                    <p><strong>Percentage Completion:</strong> 41.67%</p>
-                                    <p><strong>Status:</strong> On Track</p>
+                              <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">
+                                  <a href="StaffKPIDetail.html?id=3" class="text-decoration-none card-title">Weekly Content Delivery</a>
+                                </h5>
+                                <p><strong>Target:</strong> 12 posts</p>
+                                <p><strong>Progress:</strong> 5 posts</p>
+                                <p><strong>Percentage Completion:</strong> 41.67%</p>
+                                <p><strong>Status:</strong> On Track</p>
+                                <div class="mt-auto text-end">
+                                  <a href="StaffKPIDetail.html?id=3" class="btn btn-warning btn-sm">Update Progress</a>
                                 </div>
+                              </div>
                             </div>
-                        </a>
+                          </div>
 
                         <!-- Block 4 -->
-                        <a href="StaffKPIDetail.html?id=4" class="text-decoration-none text-dark">
+                        <div class="col">
                             <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Instagram Post Like</h5>
-                                    <p><strong>Target:</strong> 1000 likes</p>
-                                    <p><strong>Progress:</strong> 500 likes</p>
-                                    <p><strong>Percentage Completion:</strong> 50%</p>
-                                    <p><strong>Status:</strong> In Progress</p>
+                              <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">
+                                  <a href="StaffKPIDetail.html?id=4" class="text-decoration-none card-title">Customer Feedback Survey</a>
+                                </h5>
+                                <p><strong>Target:</strong> 300 responses</p>
+                                <p><strong>Progress:</strong> 0 response</p>
+                                <p><strong>Percentage Completion:</strong> 0%</p>
+                                <p><strong>Status:</strong> Not Started</p>
+                                <div class="mt-auto text-end">
+                                  <a href="StaffKPIDetail.html?id=4" class="btn btn-warning btn-sm">Update Progress</a>
                                 </div>
+                              </div>
                             </div>
-                        </a>
+                          </div>
 
                         <!-- Block 5 -->
-                        <a href="StaffKPIDetail.html?id=5" class="text-decoration-none text-dark">
+                        <div class="col">
                             <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Vendor Connections</h5>
-                                    <p><strong>Target:</strong> 10 Connections</p>
-                                    <p><strong>Progress:</strong> 10 Connections</p>
-                                    <p><strong>Percentage Completion:</strong> 100%</p>
-                                    <p><strong>Status:</strong> Completed</p>
+                              <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">
+                                  <a href="StaffKPIDetail.html?id=5" class="text-decoration-none card-title">Vendor Connections</a>
+                                </h5>
+                                <p><strong>Target:</strong> 10 Connections</p>
+                                <p><strong>Progress:</strong> 10 Connections</p>
+                                <p><strong>Percentage Completion:</strong> 100%</p>
+                                <p><strong>Status:</strong> Completed</p>
+                                <div class="mt-auto text-end">
+                                  <a href="StaffKPIDetail.html?id=5" class="btn btn-warning btn-sm">Update Progress</a>
                                 </div>
+                              </div>
                             </div>
-                        </a>
+                          </div>
 
                     </div>
                 </div>

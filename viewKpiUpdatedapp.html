@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>View KPIs</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styleAssign.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+           <!-- Sidebar -->
+<nav class="col-md-2 d-none d-md-block sidebar bg-teal" style="background-color: #5b9d9b; min-height: 100vh;">
+    <div class="sidebar-sticky p-3">
+      <img src="Logo.png" alt="KPI System Logo" class="img-fluid mb-4" style="max-width: 120px;">
+  
+      <ul class="nav flex-column">
+        <li class="nav-item mb-3">
+          <a class="nav-link" href="Dashboard.html">
+            <i class="fas fa-home"></i> Dashboard
+          </a>
+        </li>
+        
+        <li class="nav-item mb-3">
+          <a class="nav-link" href="assignKpi.html">
+            <i class="fas fa-plus-circle"></i> Assign KPI
+          </a>
+        </li>
+  
+        <li class="nav-item mb-3">
+          <a class="nav-link" href="viewKpi.html">
+            <i class="fas fa-eye"></i> View KPIs
+          </a>
+        </li>
+  
+        <li class="nav-item mb-3">
+          <a class="nav-link" href="#">
+            <i class="fas fa-file-upload"></i> Submit Evidence
+          </a>
+        </li>
+  
+        <li class="nav-item mb-3">
+          <a class="nav-link" href="#">
+            <i class="fas fa-comments"></i> Comments
+          </a>
+        </li>
+  
+        <li class="nav-item mb-3">
+          <a class="nav-link" href="profile.html">
+            <i class="fas fa-user"></i> Profile
+          </a>
+        </li>
+  
+        <li class="nav-item mb-3">
+          <a class="nav-link" href="logout.html">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+
+            <!-- Main Content -->
+            <main class="col-md-10 ms-sm-auto col-lg-10 px-4">
+                <h1 class="mt-4">View KPIs</h1>
+
+                <!-- Filters -->
+                <div class="row g-3 mt-3 mb-4">
+                    <div class="col-md-4">
+                        <input type="text" id="filterStaff" class="form-control" placeholder="Filter by Staff Name">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="filterDepartment" class="form-control" placeholder="Filter by Department">
+                    </div>
+                    <div class="col-md-4">
+                        <select id="filterStatus" class="form-select">
+                            <option value="">Filter by Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- KPI Table -->
+<div class="table-responsive">
+    <table class="kpi-table" id="kpiTable">
+        <thead>
+            <tr>
+                <th>KPI Title</th>
+                <th>Description</th>
+                <th>Staff Name</th>
+                <th>Department</th>
+                <th>Target Value</th>
+                <th>Due Date</th>
+                <th>Performance Indicators</th>
+                <th>Actions</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Customer Satisfaction</td>
+                <td>Improve customer support ratings.</td>
+                <td>Ainul Husna</td>
+                <td>Customer Service</td>
+                <td>90%</td>
+                <td>2025-06-30</td>
+                <td>CSAT survey scores</td>
+                <td><a href="ReviewEvidence.html">Review</a></td>
+                <td><span class="badge bg-warning text-white">Pending</span></td>
+            </tr>
+            <tr>
+                <td>Website Uptime</td>
+                <td>Maintain 99.9% uptime for Q2.</td>
+                <td>Haziq Rahman</td>
+                <td>IT Department</td>
+                <td>99.9%</td>
+                <td>2025-06-30</td>
+                <td>Server monitoring logs</td>
+                <td><a href="ReviewEvidence.html">Review</a></td>
+                <td><span class="badge bg-success">Approved</span></td>
+            </tr>
+            <tr>
+                <td>Increase sales by 20%</td>
+                <td>Get 20 orders</td>
+                <td>Harry Potter</td>
+                <td>Sales</td>
+                <td>20%</td>
+                <td>2025-09-30</td>
+                <td>Monthly sales report</td>
+                <td><a href="ReviewEvidence.html">Review</a></td>
+                <td><span class="badge bg-success text-white">Approved</span></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+    <!-- External JS -->
+    <script src="viewkpi.js"></script>
+</body>
+
+</html>

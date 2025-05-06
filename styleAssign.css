@@ -89,6 +89,11 @@ h1, h2, h3 {
     color: white;  /* Default text color */
 }
 
+.btn-teal:hover {
+    background-color: #006666; 
+    color: #fff;
+}
+
 .form-box {
     max-width: 600px;
     padding: 30px;

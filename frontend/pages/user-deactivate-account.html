@@ -4,11 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Change Password - KPI Management System</title>
+  <title>Delete Account</title>
+  <link rel="icon" href="../assets/images/logo.png">
 
+  <link rel="stylesheet" href="../styles/style.css" />
+  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- FontAwesome for icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -18,7 +25,7 @@
         <nav class="col-md-2 d-none d-md-block sidebar">
             <div class="sidebar-sticky">
                 <!-- LOGO block -->
-                <img src="logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
+                <img src="../assets/images/logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
 
                 <ul class="nav flex-column">
                     <ul class="nav flex-column">
@@ -43,7 +50,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="profile.html">
+                            <a class="nav- active" href="profile.html">
                                 <i class="fas fa-user"></i> Profile
                             </a>
                         </li>
@@ -57,54 +64,37 @@
             </div>
         </nav>
 
-    <!-- Main Content -->
-    <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
-      <div class="pt-4">
-        <h2>Change Password</h2>
-        <div class="card mt-4" style="max-width: 600px; margin: auto;">
-          <div class="card-body">
-            <form id="changePasswordForm">
-              <div class="mb-3">
-                <label for="currentPassword" class="form-label">Current Password</label>
-                <input type="password" class="form-control" id="currentPassword" required>
+      <!-- Main Content -->
+      <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
+        <div class="pt-4">
+          <h2>Deactivate Account</h2>
+          <div class="card mt-4" style="max-width: 600px; margin: auto;">
+            <div class="card-body text-center">
+              <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-danger" onclick="confirmDeletion()">Yes, Delete My Account</button>
+                <a href="profile.html" class="btn btn-secondary">Cancel</a>
               </div>
-              <div class="mb-3">
-                <label for="newPassword" class="form-label">New Password</label>
-                <input type="password" class="form-control" id="newPassword" required>
-              </div>
-              <div class="mb-3">
-                <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
-                <input type="password" class="form-control" id="confirmNewPassword" required>
-              </div>
-              <div class="d-grid">
-                <button type="submit" class="btn btn-warning">Change Password</button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+
+    </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/render-sidebar.js"></script>
 
-<script>
-  const form = document.getElementById('changePasswordForm');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const newPassword = document.getElementById('newPassword').value;
-    const confirmNewPassword = document.getElementById('confirmNewPassword').value;
-    
-    if (newPassword !== confirmNewPassword) {
-      alert('New passwords do not match!');
-    } else {
-      // 模拟密码修改成功，跳转到profile页面
-      alert('Password changed successfully!');
-      window.location.href = "profile.html";
+  <script>
+    function confirmDeletion() {
+      if (confirm("Are you really sure you want to delete your account?")) {
+        alert("Account deleted (simulation)");
+        window.location.href = "login.html"; // After deletion, redirect to login page
+      }
     }
-  });
-</script>
+  </script>
 
 </body>
+
 </html>

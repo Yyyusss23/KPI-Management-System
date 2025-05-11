@@ -1,0 +1,267 @@
+:root {
+  --teal-blue: #008080;
+  --light-blue: #add8e6;
+  --light-gray: #f0f0f0;
+  --teal-dark: #004d4d;
+}
+
+/* General Page Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--light-gray);
+  color: #333;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  background-color: #cfebeb;
+  color: black;
+  padding-top: 20px;
+  height: 100vh;
+  position: fixed;
+  width: 250px;
+  top: 0;
+  left: 0;
+  z-index: 1051;
+  transition: transform 0.3s ease;
+}
+
+.sidebar .nav-item a {
+  color: black;
+  text-decoration: none;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar .nav-item a i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.sidebar .nav-item a:hover,
+.sidebar .nav-item a.active {
+  background-color: var(--light-blue);
+  color: black;
+  border-radius: 5px;
+}
+
+/* Sidebar Overlay for Mobile */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1050;
+  display: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* Main Content Styles */
+main {
+  margin-left: 260px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 0 !important;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    transform: translateX(-100%);
+    z-index: 1051;
+    transition: transform 0.3s ease;
+    background-color: #cfebeb;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .menu-toggle-btn {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    z-index: 1100;
+    background-color: var(--teal-blue);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Card Styles */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  color: var(--teal-blue);
+}
+
+.card-text {
+  font-size: 14px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+/* Buttons */
+.btn-teal {
+  background-color: var(--teal-blue);
+  border-color: var(--teal-blue);
+}
+
+.btn-teal:hover {
+  background-color: #006666;
+}
+
+.btn-warning {
+  background-color: #ffcc00;
+  border-color: #ffcc00;
+}
+
+.btn-warning:hover {
+  background-color: #e6b800;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Text Colors */
+.text-teal {
+  color: var(--teal-blue);
+}
+
+.status-title {
+  color: var(--teal-blue);
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.form-teal label {
+  color: var(--teal-blue);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+.form-teal input,
+.form-teal textarea {
+  border: 1px solid var(--teal-blue);
+  font-family: Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Manager Assign KPI */
+.kpi-list-box {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    background-color: #73a9a9;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+}
+
+#kpiList .list-group-item {
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.kpi-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    font-family: Arial, sans-serif;
+}
+
+.kpi-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.kpi-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.kpi-detail {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 8px;
+
+}
+
+/* KPI Table Styles */
+.kpi-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.kpi-table thead {
+    background-color: var(--teal-blue);
+    color: white;
+}
+
+.kpi-table th,
+.kpi-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.kpi-table tbody tr:hover {
+    background-color: var(--light-blue);
+}
+
+.kpi-table tbody tr:last-child td {
+    border-bottom: none;
+}
+

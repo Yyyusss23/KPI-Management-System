@@ -1,18 +1,14 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Logout - KPI Management System</title>
+  <title>My Profile</title>
+  <link rel="icon" href="../assets/images/logo.png">
 
-  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- FontAwesome for icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  
 </head>
 
 <body>
@@ -22,7 +18,7 @@
         <nav class="col-md-2 d-none d-md-block sidebar">
             <div class="sidebar-sticky">
                 <!-- LOGO block -->
-                <img src="logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
+                <img src="../assets/images/logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
 
                 <ul class="nav flex-column">
                     <ul class="nav flex-column">
@@ -47,12 +43,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="profile.html">
+                            <a class="nav-link active" href="profile.html">
                                 <i class="fas fa-user"></i> Profile
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="logout.html">
+                            <a class="nav-link" href="logout.html">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </li>
@@ -61,23 +57,44 @@
             </div>
         </nav>
 
-      <!-- Main content -->
-      <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
-        <div class="pt-4">
-          <h2>Logout Successful</h2>
-          <p>You have been logged out. Redirecting to login page in 5 seconds...</p>
+    <!-- Main Content -->
+    <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
+      <div class="pt-4">
+        <h2>My Profile</h2>
+        <div class="card mt-4" style="max-width: 600px; margin: auto;">
+          <div class="card-body text-center">
+            <img src="../assets/images/myavatar.jpg" class="rounded-circle mb-3" alt="Avatar" style="width:120px; height:120px;">
+            <h4 id="profile-name" class="card-title">John Doe</h4>
+            <p id="profile-email" class="card-text">Email: johndoe@example.com</p>
+
+            <div class="d-grid gap-2 col-8 mx-auto mt-3">
+              <a href="edit-profile.html" class="btn btn-primary">Edit Profile</a>
+              <a href="change-password.html" class="btn btn-warning">Change Password</a>
+              <a href="deactivate-account.html" class="btn btn-danger">Delete Account</a>
+            </div>
+          </div>
         </div>
-      </main>
-
-    </div>
+      </div>
+    </main>
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    setTimeout(function () {
-      window.location.href = "login.html";
-    }, 5000);
-  </script>
+<script src="../scripts/render-sidebar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const name = localStorage.getItem('profileName');
+    const email = localStorage.getItem('profileEmail');
+
+    if (name) {
+      document.getElementById('profile-name').textContent = name;
+    }
+    if (email) {
+      document.getElementById('profile-email').textContent = email;
+    }
+  });
+</script>
+
 </body>
-
 </html>

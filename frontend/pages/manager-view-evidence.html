@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Review Evidence</title>
-
+    <link rel="icon" href="../assets/images/logo.png">
+    
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
@@ -18,7 +19,8 @@
 
     <!-- External CSS file for custom styles -->
     <link rel="stylesheet" href="style.css"> <!-- Make sure style.css is in the same folder as your HTML file -->
-    <link rel="stylesheet" href="styleRevEvi.css"> <!-- Make sure style.css is in the same folder as your HTML file -->
+    <link rel="stylesheet" href="./styles/manager-view-evidence.css"> 
+    <link rel="stylesheet" href="../styles/style.css" />
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -27,12 +29,15 @@
 
 <body>
     <div class="container-fluid">
+        <button class="menu-toggle-btn d-md-none" type="button" id="sidebarToggle">
+      ☰
+    </button>
         <div class="row">
             <!-- Sidebar -->
             <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="sidebar-sticky">
                     <!-- LOGO block -->
-                    <img src="logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
+                    <img src="../assets/images/logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
 
                     <ul class="nav flex-column">
                         <ul class="nav flex-column">
@@ -146,6 +151,7 @@
         </div>
     </div>
 
-    <script src="RevEvi.js"></script>
+    <script src="../scripts/render-sidebar.js"></script>
+    <script src="manager-view-evidence.js"></script>
 </body>
 </html>

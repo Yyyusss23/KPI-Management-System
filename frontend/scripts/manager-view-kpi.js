@@ -1,6 +1,6 @@
-// viewkpi.js
+// manager-view-kpi.js
 
-// Fetch KPIs from localStorage (used by assignkpi.js to store KPIs)
+// Fetch KPIs from localStorage (used by manager-assign-kpi.js to store KPIs)
 const storedKpis = JSON.parse(localStorage.getItem("kpiList")) || [];
 const viewKpiList = document.getElementById("viewKpiList");
 

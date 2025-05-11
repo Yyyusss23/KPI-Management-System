@@ -1,100 +1,95 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Profile</title>
-  <link rel="icon" href="../assets/images/logo.png">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Profile</title>
+    <link rel="icon" href="../assets/images/logo.png" />
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-  
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
 
-<body>
-  <div class="container-fluid">
-    <div class="row">
+  <body>
+    <button class="menu-toggle-btn d-md-none" type="button" id="sidebarToggle">
+      ☰
+    </button>
+
+    <div class="container-fluid">
+      <div class="row">
         <!-- Sidebar -->
-        <nav class="col-md-2 d-none d-md-block sidebar">
-            <div class="sidebar-sticky">
-                <!-- LOGO block -->
-                <img src="../assets/images/logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
-
-                <ul class="nav flex-column">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Dashboard.html">
-                                <i class="fas fa-home"></i> Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="StaffViewKPI.html">
-                                <i class="fas fa-tasks"></i> My KPIs
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="viewKpi.html">
-                                <i class="fa fa-book"></i> KPI Management (Manager only)
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-comments"></i> Comments
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="profile.html">
-                                <i class="fas fa-user"></i> Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.html">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-                        </li>
-
-                    </ul>
-            </div>
+        <nav class="d-md-block sidebar" id="sidebarMenu">
+          <div class="sidebar-sticky p-3">
+            <img
+              src="../assets/images/logo.png"
+              alt="KPI System Logo"
+              class="img-fluid mb-4"
+              style="max-width: 120px"
+            />
+            <ul class="nav flex-column" id="sidebarLinks">
+              <!-- Menu items will be dynamically inserted here -->
+            </ul>
+          </div>
         </nav>
 
-    <!-- Main Content -->
-    <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
-      <div class="pt-4">
-        <h2>My Profile</h2>
-        <div class="card mt-4" style="max-width: 600px; margin: auto;">
-          <div class="card-body text-center">
-            <img src="../assets/images/myavatar.jpg" class="rounded-circle mb-3" alt="Avatar" style="width:120px; height:120px;">
-            <h4 id="profile-name" class="card-title">John Doe</h4>
-            <p id="profile-email" class="card-text">Email: johndoe@example.com</p>
+        <!-- Main Content -->
+        <main class="col-12 col-md-10 px-4" id="main-content">
+          <div class="pt-4">
+            <h2>My Profile</h2>
+            <div class="card mt-4" style="max-width: 600px; margin: auto">
+              <div class="card-body text-center">
+                <img
+                  src="../assets/images/myavatar.jpg"
+                  class="rounded-circle mb-3"
+                  alt="Avatar"
+                  style="width: 120px; height: 120px"
+                />
+                <h4 id="profile-name" class="card-title">John Doe</h4>
+                <p id="profile-email" class="card-text">
+                  Email: johndoe@example.com
+                </p>
 
-            <div class="d-grid gap-2 col-8 mx-auto mt-3">
-              <a href="edit-profile.html" class="btn btn-primary">Edit Profile</a>
-              <a href="change-password.html" class="btn btn-warning">Change Password</a>
-              <a href="deactivate-account.html" class="btn btn-danger">Delete Account</a>
+                <div class="d-grid gap-2 col-8 mx-auto mt-3">
+                  <a href="user-edit-profile.html" class="btn btn-primary"
+                    >Edit Profile</a
+                  >
+                  <a href="user-change-password.html" class="btn btn-warning"
+                    >Change Password</a
+                  >
+                  <a href="user-deactivate-account.html" class="btn btn-danger"
+                    >Delete Account</a
+                  >
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </main>
       </div>
-    </main>
-  </div>
-</div>
+    </div>
 
-<script src="../scripts/render-sidebar.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+    <script src="../scripts/render-sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    const name = localStorage.getItem('profileName');
-    const email = localStorage.getItem('profileEmail');
+    <script>
+      window.addEventListener("DOMContentLoaded", (event) => {
+        const name = localStorage.getItem("profileName");
+        const email = localStorage.getItem("profileEmail");
 
-    if (name) {
-      document.getElementById('profile-name').textContent = name;
-    }
-    if (email) {
-      document.getElementById('profile-email').textContent = email;
-    }
-  });
-</script>
-
-</body>
+        if (name) {
+          document.getElementById("profile-name").textContent = name;
+        }
+        if (email) {
+          document.getElementById("profile-email").textContent = email;
+        }
+      });
+    </script>
+  </body>
 </html>

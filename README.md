@@ -68,5 +68,5 @@ Use one of the following as a `scope`:
 * Profile Page
   * `feat(profile): add profile update form`
   * `style(profile): adjust form spacing and input field size`
-  * `fix(profile): fix password update functio
+  * `fix(profile)`: fix password update function
 

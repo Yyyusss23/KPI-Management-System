@@ -134,10 +134,12 @@ main {
 .btn-teal {
   background-color: var(--teal-blue);
   border-color: var(--teal-blue);
+  color: white;
 }
 
 .btn-teal:hover {
   background-color: #006666;
+  color: white;
 }
 
 .btn-warning {

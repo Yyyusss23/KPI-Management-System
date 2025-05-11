@@ -80,7 +80,7 @@
             // Create a congratulatory message
             const congratsMessage = document.createElement("div");
             congratsMessage.classList.add("alert", "alert-success", "mt-3");
-            congratsMessage.textContent = "🎉 Congratulations! You've successfully completed this KPI.";
+            congratsMessage.textContent = "\Congratulations! You've successfully completed this KPI.";
     
             // Append message to the card body
             document.querySelector(".card-body").appendChild(congratsMessage);
@@ -96,8 +96,8 @@
         // Save progress updated status in localStorage
         localStorage.setItem('progressUpdated', 'true');
 
-        // Redirect to ViewStaffKPI.html
-        window.location.href = 'StaffViewKPI.html';
+        // Redirect to staff-view-kpi.html
+        window.location.href = 'staff-view-kpi.html';
     });
 
 

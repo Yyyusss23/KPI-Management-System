@@ -19,51 +19,8 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-        <!-- Sidebar -->
-        <nav class="col-md-2 d-none d-md-block sidebar">
-            <div class="sidebar-sticky">
-                <!-- LOGO block -->
-                <img src="../assets/images/logo.png" alt="KPI System Logo" class="img-fluid mb-3" style="max-width: 120px;">
-
-                <ul class="nav flex-column">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Dashboard.html">
-                                <i class="fas fa-home"></i> Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="StaffViewKPI.html">
-                                <i class="fas fa-tasks"></i> My KPIs
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="viewKpi.html">
-                                <i class="fa fa-book"></i> KPI Management (Manager only)
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-comments"></i> Comments
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="profile.html">
-                                <i class="fas fa-user"></i> Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="logout.html">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-                        </li>
-
-                    </ul>
-            </div>
-        </nav>
-
       <!-- Main content -->
-      <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
+      <main class="col-12 col-md-10 px-4" id="main-content">
         <div class="pt-4">
           <h2>Logout Successful</h2>
           <p>You have been logged out. Redirecting to login page in 5 seconds...</p>
@@ -72,11 +29,9 @@
 
     </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     setTimeout(function () {
-      window.location.href = "login.html";
+      window.location.href = "user-login.html";
     }, 5000);
   </script>
 </body>

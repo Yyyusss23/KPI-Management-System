@@ -56,7 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
       `
       }
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link ${
+          currentPage === "notifications.html" ? "active" : ""
+        }" href="notifications.html">
           <i class="fas fa-comments"></i> Notifications
         </a>
       </li>

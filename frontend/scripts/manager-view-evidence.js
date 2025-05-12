@@ -1,3 +1,30 @@
+const kpiId = new URLSearchParams(window.location.search).get("id");
+const kpis = JSON.parse(localStorage.getItem("kpis")) || [];
+const kpi = kpis.find(k => k.id === kpiId);
+
+if (!kpi) {
+  alert("KPI not found");
+} else {
+  document.getElementById("kpi-title").textContent = kpi.title;
+  document.getElementById("kpi-description").textContent = kpi.description;
+  document.getElementById("kpi-staff").textContent = kpi.staffName;
+  document.getElementById("kpi-status").textContent = kpi.status;
+
+  // Evidence
+  const evidence = kpi.evidence?.[0];
+ document.getElementById("kpi-evidence").textContent = evidence?.file || "N/A";
+
+  // Display GvA (Suppose it's calculated from the evidence)
+  const actual = evidence?.actualValue ?? 0;
+  const target = parseInt(kpi.targetValue.match(/\d+/)?.[0] || "0", 10);
+
+  document.getElementById("gva-actual").textContent = actual;
+  document.getElementById("gva-target").textContent = `/${target}`;
+}
+
+
+
+
 document.getElementById("Btn-GvA-Edit").addEventListener("click", function() {
     // Get the current value of GvA
     const gvAValue = document.getElementById("gva-actual").innerText;
@@ -31,3 +58,4 @@ document.getElementById("Btn-GvA-Edit").addEventListener("click", function() {
         this.innerText = "EDIT";
     }
 });
+

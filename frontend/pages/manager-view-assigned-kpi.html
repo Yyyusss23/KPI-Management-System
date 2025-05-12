@@ -57,11 +57,11 @@
           <!-- Filters -->
           <div class="row g-3 mt-3 mb-4">
             <div class="col-md-4">
-              <select id="filterStaffLastName" class="form-select">
-                <option value="">Filter by Staff Last Name</option>
-                <option value="Pending">Husna</option>
-                <option value="Approved">Rahman</option>
-                <option value="Rejected">Potter</option>
+              <select id="filterStaff" class="form-select">
+                <option value="">Filter by Staff</option>
+                <option value="Pending">Ainul Husna</option>
+                <option value="Approved">Haziq Rahman</option>
+                <option value="Rejected">Harry Potter</option>
               </select>
             </div>
 
@@ -100,44 +100,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Customer Satisfaction</td>
-                  <!-- TODO: KPI點進去詳細頁 然後在裏面可以看detail-->
-                  <td>Improve customer support ratings.</td>
-                  <td>Ainul Husna</td>
-                  <td>Customer Service</td>
-                  <td>90%</td>
-                  <td>2025-06-30</td>
-                  <td>CSAT survey scores</td>
-                  <td><a href="manager-view-evidence.html">Review</a></td>
-                  <td>
-                    <span class="badge bg-warning text-white">Pending</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Website Uptime</td>
-                  <td>Maintain 99.9% uptime for Q2.</td>
-                  <td>Haziq Rahman</td>
-                  <td>IT</td>
-                  <td>99.9%</td>
-                  <td>2025-06-30</td>
-                  <td>Server monitoring logs</td>
-                  <td></td>
-                  <td><span class="badge bg-success">Approved</span></td>
-                </tr>
-                <tr>
-                  <td>Increase sales by 20%</td>
-                  <td>Get 20 orders</td>
-                  <td>Harry Potter</td>
-                  <td>Sales</td>
-                  <td>20%</td>
-                  <td>2025-09-30</td>
-                  <td>Monthly sales report</td>
-                  <td><a href="manager-view-evidence.html">Review</a></td>
-                  <td>
-                    <span class="badge bg-warning text-white">Pending</span>
-                  </td>
-                </tr>
+                <!-- Will be dynamically inserted with manager-view-kpi.js -->
               </tbody>
             </table>
 
@@ -162,6 +125,7 @@
 
     <!-- External JS -->
     <script type="module" src="../scripts/render-sidebar.js"></script>
+    <script src="../scripts/sample-data.js"></script>
     <script src="../scripts/manager-view-kpi.js"></script>
   </body>
 </html>

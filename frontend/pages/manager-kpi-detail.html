@@ -3,12 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Manager View KPI</title>
+    <title>KPI Detail</title>
+    <!-- TODO: Change title to specific KPI name -->
     <link rel="icon" href="../assets/images/logo.png" />
 
-    <!-- Bootstrap + Icons + Styles -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Bootstrap & Icons & Styles -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
 
@@ -20,26 +27,50 @@
         <!-- Sidebar -->
         <nav class="d-md-block sidebar" id="sidebarMenu">
           <div class="sidebar-sticky p-3">
-            <img src="../assets/images/logo.png" alt="Logo" class="img-fluid mb-4" style="max-width: 120px" />
+            <img
+              src="../assets/images/logo.png"
+              alt="Logo"
+              class="img-fluid mb-4"
+              style="max-width: 120px"
+            />
             <ul class="nav flex-column" id="sidebarLinks"></ul>
           </div>
         </nav>
 
         <!-- Main Content -->
         <main class="col-12 col-md-10 px-4" id="main-content">
-          <h2 class="mt-4">KPI Detail: Staff Submission Timeline</h2>
+          <h2 class="mt-4">KPI Detail</h2>
 
           <div class="card mt-3">
             <div class="card-body">
-              <h5 class="card-title text-teal">Improve Website SEO</h5>
-              <p><strong>Target:</strong> Rank Top 5 on Google</p>
-              <p><strong>Assigned To:</strong> John Doe</p>
-              <p><strong>Status:</strong> In Progress</p>
-              <p><strong>Due Date:</strong> 2025-06-30</p>
+              <h3 class="card-title text-teal"></h3>
+              <p><strong>Target:</strong></p>
+              <p id="kpi-target"></p>
+              <p><strong>Assigned To:</strong></p>
+              <p id="kpi-staff"></p>
+              <p><strong>Status:</strong></p>
+              <p id="kpi-status"></p>
+              <p><strong>Due Date:</strong></p>
+              <p id="kpi-dueDate"></p>
+            </div>
+
+            <!-- Edit Controls -->
+            <div class="ms-3 mb-4">
+              <button
+                class="btn btn-outline-secondary btn-sm"
+                id="editToggleBtn"
+              >
+                Edit
+              </button>
+              <button class="btn btn-success btn-sm d-none" id="saveChangesBtn">
+                Save
+              </button>
             </div>
           </div>
 
-          <h5 class="mt-4 mb-3 text-teal"><i class="fas fa-clock me-2"></i>Evidence Timeline</h5>
+          <h3 class="mt-4 mb-3 text-teal">
+            <i class="fas fa-clock me-2"></i>Evidence Timeline
+          </h3>
 
           <ul class="timeline">
             <li>
@@ -49,7 +80,10 @@
                   <h6 class="timeline-title">May 8, 2025</h6>
                 </div>
                 <div class="timeline-body">
-                  <p><strong>Progress:</strong> Submitted keyword report for April.</p>
+                  <p>
+                    <strong>Progress:</strong> Submitted keyword report for
+                    April.
+                  </p>
                   <p><a href="#">📄 keyword_report_apr.pdf</a></p>
                 </div>
               </div>
@@ -61,7 +95,10 @@
                   <h6 class="timeline-title">April 15, 2025</h6>
                 </div>
                 <div class="timeline-body">
-                  <p><strong>Progress:</strong> Uploaded screenshot of analytics dashboard.</p>
+                  <p>
+                    <strong>Progress:</strong> Uploaded screenshot of analytics
+                    dashboard.
+                  </p>
                   <p><a href="#">📷 analytics_screenshot.png</a></p>
                 </div>
               </div>
@@ -74,5 +111,88 @@
 
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
     <script type="module" src="../scripts/render-sidebar.js"></script>
+
+    <script src="../scripts/sample-data.js"></script>
+    <script src="../scripts/manager-kpi-detail.js"></script>
+
+    <!-- TODO: Temporary script to handle the edit button -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const editBtn = document.getElementById("editToggleBtn");
+        const saveBtn = document.getElementById("saveChangesBtn");
+
+        function createEditableInputs() {
+          const targetEl = document.getElementById("kpi-target");
+          const statusEl = document.getElementById("kpi-status");
+          const dueDateEl = document.getElementById("kpi-dueDate");
+
+          if (!document.getElementById("kpi-target-input")) {
+            const originalTarget = targetEl.textContent.trim();
+            const originalStatus = statusEl.textContent.trim();
+            const originalDueDate = dueDateEl.textContent.trim();
+
+            targetEl.innerHTML = "";
+            statusEl.innerHTML = "";
+            dueDateEl.innerHTML = "";
+
+            // Insert input fields
+            targetEl.innerHTML = `
+          <input type="text" class="form-control form-control-sm d-inline-block w-auto"
+                 id="kpi-target-input" value="${originalTarget}" />
+        `;
+
+            statusEl.innerHTML = `
+          <select class="form-select form-select-sm d-inline-block w-auto" id="kpi-status-input">
+            <option ${
+              originalStatus === "Pending" ? "selected" : ""
+            }>Pending</option>
+            <option ${
+              originalStatus === "Approved" ? "selected" : ""
+            }>Approved</option>
+            <option ${
+              originalStatus === "Rejected" ? "selected" : ""
+            }>Rejected</option>
+          </select>
+        `;
+
+            dueDateEl.innerHTML = `
+          <input type="date" class="form-control form-control-sm d-inline-block w-auto"
+                 id="kpi-dueDate-input" value="${originalDueDate}" />
+        `;
+          }
+        }
+
+        editBtn.addEventListener("click", function () {
+          createEditableInputs();
+          editBtn.classList.add("d-none");
+          saveBtn.classList.remove("d-none");
+        });
+
+        saveBtn.addEventListener("click", function () {
+          const newTarget = document
+            .getElementById("kpi-target-input")
+            .value.trim();
+          const newStatus = document.getElementById("kpi-status-input").value;
+          const newDueDate = document.getElementById("kpi-dueDate-input").value;
+
+          const originalTarget =
+            document.getElementById("kpi-target-input").defaultValue;
+          const originalDueDate =
+            document.getElementById("kpi-dueDate-input").defaultValue;
+
+          // Only update if the new value is different
+          const targetEl = document.getElementById("kpi-target");
+          const statusEl = document.getElementById("kpi-status");
+          const dueDateEl = document.getElementById("kpi-dueDate");
+
+          targetEl.innerHTML = newTarget || originalTarget;
+          statusEl.innerHTML = newStatus;
+          dueDateEl.innerHTML = newDueDate || originalDueDate;
+
+          saveBtn.classList.add("d-none");
+          editBtn.classList.remove("d-none");
+        });
+      });
+    </script>
   </body>
 </html>

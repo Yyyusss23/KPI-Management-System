@@ -189,7 +189,6 @@ html {
 
 /* Manager Assign KPI */
 .kpi-list-box {
-  max-width: 600px;
   width: 100%;
   padding: 20px;
   background-color: #73a9a9;

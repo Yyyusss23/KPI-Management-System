@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>View Assigned KPIs</title>
+    <title>Assigned KPIs</title>
     <link rel="icon" href="../assets/images/logo.png" />
 
     <!-- Bootstrap 5 CSS -->
@@ -64,7 +64,7 @@
                 <option value="Rejected">Potter</option>
               </select>
             </div>
-            
+
             <div class="col-md-4">
               <select id="filterDepartment" class="form-select">
                 <option value="">Filter by Department</option>
@@ -72,7 +72,6 @@
                 <option value="Approved">IT</option>
                 <option value="Rejected">Sales</option>
               </select>
-              
             </div>
             <div class="col-md-4">
               <select id="filterStatus" class="form-select">
@@ -102,7 +101,8 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Customer Satisfaction</td> <!-- TODO: KPI點進去詳細頁 然後在裏面可以看detail-->
+                  <td>Customer Satisfaction</td>
+                  <!-- TODO: KPI點進去詳細頁 然後在裏面可以看detail-->
                   <td>Improve customer support ratings.</td>
                   <td>Ainul Husna</td>
                   <td>Customer Service</td>
@@ -161,7 +161,7 @@
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
     <!-- External JS -->
-    <script src="../scripts/render-sidebar.js"></script>
+    <script type="module" src="../scripts/render-sidebar.js"></script>
     <script src="../scripts/manager-view-kpi.js"></script>
   </body>
 </html>

@@ -53,7 +53,9 @@
                   <button class="btn btn-danger" onclick="confirmDeletion()">
                     Yes, Delete My Account
                   </button>
-                  <a href="user-profile.html" class="btn btn-secondary">Cancel</a>
+                  <a href="user-profile.html" class="btn btn-secondary"
+                    >Cancel</a
+                  >
                 </div>
               </div>
             </div>
@@ -63,13 +65,13 @@
     </div>
 
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
-    <script src="../scripts/render-sidebar.js"></script>
+    <script type="module" src="../scripts/render-sidebar.js"></script>
 
     <script>
       function confirmDeletion() {
         if (confirm("Are you really sure you want to delete your account?")) {
           alert("Account deleted (simulation)");
-          window.location.href = "user-login.html"; // After deletion, redirect to login page
+          window.location.href = "index.html"; // After deletion, redirect to login page
         }
       }
     </script>

@@ -65,6 +65,9 @@
               <button class="btn btn-success btn-sm d-none" id="saveChangesBtn">
                 Save
               </button>
+              <button class="btn btn-danger btn-sm ms-2" id="deleteBtn">
+                Delete
+              </button>
             </div>
           </div>
 
@@ -120,6 +123,8 @@
       document.addEventListener("DOMContentLoaded", function () {
         const editBtn = document.getElementById("editToggleBtn");
         const saveBtn = document.getElementById("saveChangesBtn");
+        const deleteBtn = document.getElementById("deleteBtn");
+        const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
 
         function createEditableInputs() {
           const targetEl = document.getElementById("kpi-target");
@@ -131,11 +136,6 @@
             const originalStatus = statusEl.textContent.trim();
             const originalDueDate = dueDateEl.textContent.trim();
 
-            targetEl.innerHTML = "";
-            statusEl.innerHTML = "";
-            dueDateEl.innerHTML = "";
-
-            // Insert input fields
             targetEl.innerHTML = `
           <input type="text" class="form-control form-control-sm d-inline-block w-auto"
                  id="kpi-target-input" value="${originalTarget}" />
@@ -180,19 +180,69 @@
           const originalDueDate =
             document.getElementById("kpi-dueDate-input").defaultValue;
 
-          // Only update if the new value is different
-          const targetEl = document.getElementById("kpi-target");
-          const statusEl = document.getElementById("kpi-status");
-          const dueDateEl = document.getElementById("kpi-dueDate");
-
-          targetEl.innerHTML = newTarget || originalTarget;
-          statusEl.innerHTML = newStatus;
-          dueDateEl.innerHTML = newDueDate || originalDueDate;
+          document.getElementById("kpi-target").innerHTML =
+            newTarget || originalTarget;
+          document.getElementById("kpi-status").innerHTML = newStatus;
+          document.getElementById("kpi-dueDate").innerHTML =
+            newDueDate || originalDueDate;
 
           saveBtn.classList.add("d-none");
           editBtn.classList.remove("d-none");
         });
+
+        deleteBtn.addEventListener("click", function () {
+          const modal = new bootstrap.Modal(
+            document.getElementById("deleteConfirmModal")
+          );
+          modal.show();
+        });
+
+        confirmDeleteBtn.addEventListener("click", function () {
+          // TODO: Replace this with actual delete logic (e.g., API call)
+          alert("KPI has been deleted.");
+          // Example: Redirect to dashboard or list page
+          window.location.href = "dashboard.html";
+        });
       });
     </script>
+    <!-- Delete Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="deleteConfirmModal"
+      tabindex="-1"
+      aria-labelledby="deleteConfirmLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteConfirmLabel">Confirm Delete</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this KPI?
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              No
+            </button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+              Yes, Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

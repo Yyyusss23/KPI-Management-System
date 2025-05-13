@@ -28,50 +28,40 @@ document.addEventListener("DOMContentLoaded", () => {
   if (sidebarLinks) {
     sidebarLinks.innerHTML = `
       <li class="nav-item">
-        <a class="nav-link ${
-          currentPage === "dashboard.html" ? "active" : ""
-        }" href="dashboard.html">
-          <i class="fas fa-home"></i> Dashboard
+        <a class="nav-link ${currentPage === "dashboard.html" ? "active" : ""}" href="dashboard.html">
+          <i class="fas fa-home"></i> <span class="menu-text">Dashboard</span>
         </a>
       </li>
       ${
         userRole === "manager"
           ? `
         <li class="nav-item">
-          <a class="nav-link ${
-            isManagerKpiPage ? "active" : ""
-          }" href="manager-view-assigned-kpi.html">
-            <i class="fas fa-book"></i> KPI Management
+          <a class="nav-link ${isManagerKpiPage ? "active" : ""}" href="manager-view-assigned-kpi.html">
+            <i class="fas fa-book"></i> <span class="menu-text">KPI Management</span>
           </a>
         </li>
       `
           : `
         <li class="nav-item">
-          <a class="nav-link ${
-            isStaffKpiPage ? "active" : ""
-          }" href="staff-view-kpi.html">
-            <i class="fas fa-tasks"></i> My KPI
+          <a class="nav-link ${isStaffKpiPage ? "active" : ""}" href="staff-view-kpi.html">
+            <i class="fas fa-tasks"></i> <span class="menu-text">My KPI</span>
           </a>
         </li>
       `
       }
       <li class="nav-item">
-        <a class="nav-link ${
-          currentPage === "notifications.html" ? "active" : ""
-        }" href="notifications.html">
-          <i class="fas fa-comments"></i> Notifications
+        <a class="nav-link ${currentPage === "notifications.html" ? "active" : ""}" href="notifications.html">
+          <i class="fas fa-comments"></i> <span class="menu-text">Notifications</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link ${
-          isProfilePage ? "active" : ""
-        }" href="user-profile.html">
-          <i class="fas fa-user"></i> Profile
+        <a class="nav-link ${isProfilePage ? "active" : ""}" href="user-profile.html">
+          <i class="fas fa-user"></i> <span class="menu-text">Profile</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="user-logout.html">
-          <i class="fas fa-sign-out-alt"></i> Logout
+          <i class="fas fa-sign-out-alt"></i> <span class="menu-text">Logout</span>
         </a>
       </li>
     `;

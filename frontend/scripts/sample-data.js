@@ -127,4 +127,5 @@ const sampleKPIs = [
   }
 ];
 
+
 localStorage.setItem("kpis", JSON.stringify(sampleKPIs));

@@ -19,6 +19,7 @@ function renderCards(kpis) {
     `;
     return;
   }
+  
 
   kpis.forEach((kpi) => {
     const card = document.createElement("div");

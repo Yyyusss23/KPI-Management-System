@@ -6,6 +6,14 @@
 }
 
 /* General Page Styles */
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+}
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
 body {
   font-family: Arial, sans-serif;
   background-color: var(--light-gray);
@@ -50,6 +58,13 @@ body {
   color: black;
   border-radius: 5px;
 }
+
+.menu-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
 
 /* Sidebar Overlay for Mobile */
 .sidebar-overlay {
@@ -123,7 +138,8 @@ main {
 }
 
 .card-text {
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .card-body {
@@ -329,6 +345,7 @@ html {
   margin-bottom: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: background-color 0.2s ease;
+  margin-top: 10px;
 }
 
 .notification-item:hover {

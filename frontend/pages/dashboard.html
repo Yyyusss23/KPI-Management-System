@@ -25,6 +25,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- External CSS file for custom styles -->
     <link rel="stylesheet" href="../styles/style.css" />
@@ -63,14 +67,14 @@
 
           <!-- ====== STAFF Dashboard Section ====== -->
           <div id="staff-dashboard">
-            <h4 class="mb-3 text-teal">My Assigned KPIs</h4>
+            <h2 class="mb-3 text-teal">My Assigned KPIs</h2>
 
             <div class="row">
               <!-- KPI Cards -->
               <div class="col-md-4">
                 <div class="card mb-4">
                   <div class="card-body">
-                    <h5 class="card-title">Increase Website Traffic</h5>
+                    <h4 class="card-title">Increase Website Traffic</h4>
                     <p class="card-text">Due: 2025-06-30</p>
                     <a
                       href="staff-kpi-detail.html?id=1"
@@ -84,9 +88,11 @@
               <div class="col-md-4">
                 <div class="card mb-4">
                   <div class="card-body">
-                    <h5 class="card-title">Generate KPI reports</h5>
+                    <h4 class="card-title">Generate KPI reports</h4>
                     <p class="card-text">Last Generated: 2025-05-10</p>
-                    <a href="staff-generate-report.html" class="btn btn-success btn-sm"
+                    <a
+                      href="staff-generate-report.html"
+                      class="btn btn-success btn-sm"
                       >Generate Report</a
                     >
                   </div>
@@ -99,7 +105,7 @@
               <div class="col-md-6 mb-4">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">KPI Progress Overview</h5>
+                    <h4 class="card-title">KPI Progress Overview</h4>
                     <canvas id="staffProgressChart" height="250"></canvas>
                   </div>
                 </div>
@@ -107,7 +113,7 @@
               <div class="col-md-6">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">KPI Score Trend</h5>
+                    <h4 class="card-title">KPI Score Trend</h4>
                     <canvas id="staffScoreTrendChart" height="250"></canvas>
                   </div>
                 </div>
@@ -117,7 +123,7 @@
 
           <!-- ====== MANAGER Dashboard Section ====== -->
           <div id="manager-dashboard">
-            <h4 class="mb-3 text-teal">Team KPI Overview</h4>
+            <h2 class="mb-3 text-teal">Team KPI Overview</h2>
 
             <!-- Status Summary -->
             <div class="row text-center mb-4">
@@ -140,16 +146,17 @@
             </div>
 
             <!-- Manager Functions -->
-            <div class="row row-cols-1 row-cols-md-3 justify-content-center g-4">
+            <div
+              class="row row-cols-1 row-cols-md-3 justify-content-center g-4"
+            >
               <div class="col">
                 <div class="card h-100">
                   <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Assign new KPIs</h5>
+                    <h4 class="card-title">Assign new KPIs</h4>
                     <p class="card-text">Assign new KPIs to staff.</p>
-                    
+
                     <a
-                    
-                      href="manager-assign-kpi.html" 
+                      href="manager-assign-kpi.html"
                       class="btn btn-primary btn-sm mt-auto"
                       >Assign</a
                     >
@@ -160,8 +167,10 @@
               <div class="col">
                 <div class="card h-100">
                   <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Check Updates</h5>
-                    <p class="card-text">View latest progress of assigned KPIs.</p>
+                    <h4 class="card-title">Check Updates</h4>
+                    <p class="card-text">
+                      View latest progress of assigned KPIs.
+                    </p>
                     <a
                       href="manager-view-assigned-kpi.html"
                       class="btn btn-warning btn-sm mt-auto"
@@ -170,7 +179,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
 
             <!-- Manager Charts -->
@@ -178,7 +186,7 @@
               <div class="col-md-6 mb-4">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">KPI Status Distribution</h5>
+                    <h4 class="card-title">KPI Status Distribution</h4>
                     <canvas id="managerKpiStatusChart" height="200"></canvas>
                   </div>
                 </div>
@@ -187,7 +195,7 @@
               <div class="col-md-6">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Average KPI Scores by Staff</h5>
+                    <h4 class="card-title">Average KPI Scores by Staff</h4>
                     <canvas id="managerKpiChart" height="200"></canvas>
                   </div>
                 </div>

@@ -75,125 +75,128 @@
 
           <!-- Staff Charts -->
           <div class="row mt-4">
+            <!-- KPI Progress Overview Chart -->
             <div class="col-md-6 mb-4">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">KPI Progress Overview</h4>
-                  <canvas id="staffProgressChart" height="250"></canvas>
+                  <canvas id="staffProgressChart" width="100" height="100"></canvas> <!-- 设置相同的宽度和高度 -->
                 </div>
               </div>
             </div>
+
+            <!-- KPI Score Trend Chart -->
             <div class="col-md-6">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">KPI Score Trend</h4>
-                  <canvas id="staffScoreTrendChart" height="250"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ====== MANAGER Dashboard Section ====== -->
-        <div id="manager-dashboard">
-          <h2 class="mb-3 text-teal">Team KPI Overview</h2>
-          <!-- Status Summary -->
-          <div class="row text-center mb-4">
-            <!-- Not Started Card -->
-            <div class="col-md-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="status-title">Not Started</h5>
-                  <span class="badge bg-secondary">3</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- In Progress Card -->
-            <div class="col-md-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="status-title">In Progress</h5>
-                  <span class="badge bg-warning text-dark">5</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Waiting Upload Card -->
-            <div class="col-md-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="status-title">Waiting Upload</h5>
-                  <span class="badge bg-info text-dark">2</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ready for QA Card -->
-            <div class="col-md-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="status-title">Ready for QA</h5>
-                  <span class="badge bg-success">4</span>
+                  <canvas id="staffScoreTrendChart" width="100" height="100"></canvas> <!-- 设置相同的宽度和高度 -->
                 </div>
               </div>
             </div>
           </div>
 
 
-          <!-- Manager Functions -->
-          <div class="row row-cols-1 row-cols-md-3 justify-content-center g-4">
-            <div class="col">
-              <div class="card h-100">
-                <div class="card-body d-flex flex-column">
-                  <h4 class="card-title">Assign new KPIs</h4>
-                  <p class="card-text">Assign new KPIs to staff.</p>
+          <!-- ====== MANAGER Dashboard Section ====== -->
+          <div id="manager-dashboard">
+            <h2 class="mb-3 text-teal">Team KPI Overview</h2>
+            <!-- Status Summary -->
+            <div class="row text-center mb-4">
+              <!-- Not Started Card -->
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="status-title">Not Started</h5>
+                    <span class="badge bg-secondary">3</span>
+                  </div>
+                </div>
+              </div>
 
-                  <a href="manager-assign-kpi.html" class="btn btn-primary btn-sm mt-auto">Assign</a>
+              <!-- In Progress Card -->
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="status-title">In Progress</h5>
+                    <span class="badge bg-warning text-dark">5</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Waiting Upload Card -->
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="status-title">Waiting Upload</h5>
+                    <span class="badge bg-info text-dark">2</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ready for QA Card -->
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="status-title">Ready for QA</h5>
+                    <span class="badge bg-success">4</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="col">
-              <div class="card h-100">
-                <div class="card-body d-flex flex-column">
-                  <h4 class="card-title">Check Updates</h4>
-                  <p class="card-text">
-                    View latest progress of assigned KPIs.
-                  </p>
-                  <a href="manager-view-assigned-kpi.html" class="btn btn-warning btn-sm mt-auto">View</a>
+
+            <!-- Manager Functions -->
+            <div class="row row-cols-1 row-cols-md-3 justify-content-center g-4">
+              <div class="col">
+                <div class="card h-100">
+                  <div class="card-body d-flex flex-column">
+                    <h4 class="card-title">Assign new KPIs</h4>
+                    <p class="card-text">Assign new KPIs to staff.</p>
+
+                    <a href="manager-assign-kpi.html" class="btn btn-primary btn-sm mt-auto">Assign</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card h-100">
+                  <div class="card-body d-flex flex-column">
+                    <h4 class="card-title">Check Updates</h4>
+                    <p class="card-text">
+                      View latest progress of assigned KPIs.
+                    </p>
+                    <a href="manager-view-assigned-kpi.html" class="btn btn-warning btn-sm mt-auto">View</a>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <!-- Manager Charts -->
+            <div class="row mt-4">
+              <!-- KPI Status Distribution Chart -->
+              <div class="col-md-6 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">KPI Status Distribution</h4>
+                    <canvas id="managerKpiStatusChart" width="200" height="200"></canvas> <!-- 宽高都设置为200 -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Average KPI Scores by Staff Chart -->
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Average KPI Scores by Staff</h4>
+                    <canvas id="managerKpiChart" width="200" height="200"></canvas> <!-- 宽高都设置为200 -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
           </div>
-
-          <!-- Manager Charts -->
-          <div class="row mt-4">
-            <!-- KPI Status Distribution Chart -->
-            <div class="col-md-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">KPI Status Distribution</h4>
-                  <canvas id="managerKpiStatusChart" width="200" height="200"></canvas> <!-- 宽高都设置为200 -->
-                </div>
-              </div>
-            </div>
-
-            <!-- Average KPI Scores by Staff Chart -->
-            <div class="col-md-6">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Average KPI Scores by Staff</h4>
-                  <canvas id="managerKpiChart" width="200" height="200"></canvas> <!-- 宽高都设置为200 -->
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-
-        </div>
       </main>
     </div>
   </div>

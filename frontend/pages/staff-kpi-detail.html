@@ -21,10 +21,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
 
     <!-- External CSS file for custom styles -->
     <link rel="stylesheet" href="../styles/style.css" />
@@ -58,7 +54,7 @@
 
           <div class="card mb-4">
             <div class="card-body">
-              <h2 id="kpiTitle" class="card-title"></h2>
+              <h5 id="kpiTitle" class="card-title"></h5>
               <p>
                 <strong>Description:</strong> <span id="kpiDescription"></span>
               </p>
@@ -79,10 +75,10 @@
 
               <!-- Update Progress Form -->
 
-              <h3 class="mb-3 text-teal">
+              <h5 class="mb-3 text-teal">
                 <i class="fas fa-edit me-2 text-teal"></i>Update Your KPI
                 Progress
-              </h3>
+              </h5>
               <div id="updateFormCard" class="card shadow-sm p-3 mt-3">
                 <form id="updateForm">
                   <div class="mb-3">
@@ -98,6 +94,7 @@
                         class="form-control"
                         id="progressInput"
                         placeholder="E.g. 15%, 100 users, 5 posts"
+                        required
                       />
                     </div>
                   </div>
@@ -111,12 +108,13 @@
                       id="progressNote"
                       rows="3"
                       placeholder="Briefly describe your update..."
+                      required
                     ></textarea>
                   </div>
 
                   <div class="mb-3">
                     <label for="fileUpload" class="form-label"
-                      >Attach Supporting File</label
+                      >Attach Evidence</label
                     >
                     <div class="input-group">
                       <span class="input-group-text"
@@ -127,6 +125,7 @@
                         type="file"
                         id="fileUpload"
                         accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xlsx,.pptx"
+                        required
                       />
                     </div>
                     <div class="form-text">
@@ -147,6 +146,7 @@
                         class="form-control"
                         id="fileNote"
                         placeholder="E.g. Screenshot of analytics dashboard"
+                        required
                       />
                     </div>
                   </div>
@@ -160,6 +160,29 @@
         </main>
       </div>
     </div>
+
+    <script>
+      document.getElementById('updateForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // prevent actual form submission
+
+  // Collect form field values
+  const progressInput = document.getElementById('progressInput').value.trim();
+  const progressNote = document.getElementById('progressNote').value.trim();
+  const fileUpload = document.getElementById('fileUpload').value.trim();
+  const fileNote = document.getElementById('fileNote').value.trim();
+
+  // Check if any field is empty
+  if (!progressInput || !progressNote || !fileUpload || !fileNote) {
+    alert('⚠️ Please fill all the details before submitting.');
+    return;
+  }
+
+  // If all fields are filled, you can proceed with form submission logic here
+  alert('✅ Progress submitted successfully!');
+  // this.submit(); // or whatever action you want to trigger
+});
+
+    </script>
 
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
 

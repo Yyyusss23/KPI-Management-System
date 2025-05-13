@@ -22,11 +22,6 @@
       rel="stylesheet"
     />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-
     <!-- External CSS file for custom styles -->
     <link rel="stylesheet" href="../styles/style.css" />
 
@@ -65,18 +60,30 @@
         <main class="col-12 col-md-10 px-4" id="main-content">
           <h1 class="mt-4 ms-1">My KPIs</h1>
 
+
           <!-- Overall Progress Chart -->
 
           <div class="row mt-4">
-            <div class="col-md-5">
+            <div class="col-md-4">
               <div class="card">
                 <div class="card-body">
                   <h5>Overall Progress</h5>
-                  <canvas id="kpiProgressChart" height="150"></canvas>
+                  <canvas id="kpiProgressChart" height="240"></canvas>
                 </div>
               </div>
             </div>
+
+            <!-- Area Chart -->
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5>Monthly Progress</h5>
+        <canvas id="kpiAreaChart" height="188"></canvas>
+      </div>
+    </div>
+  </div>
           </div>
+          <br>
 
           <!-- Chart.js CDN -->
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -114,27 +121,152 @@
                 },
               },
             });
+
+// Area Chart
+const areaCtx = document.getElementById('kpiAreaChart').getContext('2d');
+new Chart(areaCtx, {
+  type: 'line',
+  data: {
+    labels: ['Jan 2025', 'Feb 2025', 'March 2025', 'April 2025', 'May 2025'],
+    datasets: [{
+      label: 'Completed Tasks',
+      data: [2, 4, 5, 7, 8],
+      fill: true,
+      backgroundColor: 'rgba(25, 135, 84, 0.2)',
+      borderColor: 'rgba(25, 135, 84, 1)',
+      tension: 0.3,
+      pointBackgroundColor: 'rgba(25, 135, 84, 1)',
+      pointRadius: 5
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { enabled: true }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: { stepSize: 1 }
+      }
+    }
+  }
+});
+
           </script>
+
+<!-- KPI Stats Overview Cards (Horizontal) -->
+<div class="row row-cols-1 row-cols-md-5 g-3 mb-4">
+  
+  <div class="col">
+    <div class="card h-100 shadow-sm custom-kpi-card">
+      <div class="card-body d-flex align-items-center">
+        <div class="me-3">
+          <span class="badge bg-primary p-2">
+            <i class="fas fa-tasks fa-lg text-white"></i>
+          </span>
+        </div>
+        <div>
+          <h6 class="card-title mb-1">Total KPI</h6>
+          <h5 class="mb-0">5</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 shadow-sm custom-kpi-card">
+      <div class="card-body d-flex align-items-center">
+        <div class="me-3">
+          <span class="badge bg-warning p-2">
+            <i class="far fa-clock fa-lg text-white"></i>
+          </span>
+        </div>
+        <div>
+          <h6 class="card-title mb-1">In Progress</h6>
+          <h5 class="mb-0">3</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 shadow-sm custom-kpi-card">
+      <div class="card-body d-flex align-items-center">
+        <div class="me-3">
+          <span class="badge bg-success p-2">
+            <i class="fas fa-check-circle fa-lg text-white"></i>
+          </span>
+        </div>
+        <div>
+          <h6 class="card-title mb-1">Completed</h6>
+          <h5 class="mb-0">1</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 shadow-sm custom-kpi-card">
+      <div class="card-body d-flex align-items-center">
+        <div class="me-3">
+          <span class="badge bg-secondary p-2">
+            <i class="fas fa-pause-circle fa-lg text-white"></i>
+          </span>
+        </div>
+        <div>
+          <h6 class="card-title mb-1">Not Started</h6>
+          <h5 class="mb-0">1</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100 shadow-sm custom-kpi-card">
+      <div class="card-body d-flex align-items-center">
+        <div class="me-3">
+          <span class="badge bg-info p-2">
+            <i class="fas fa-hourglass-half fa-lg text-white"></i>
+          </span>
+        </div>
+        <div>
+          <h6 class="card-title mb-1">Pending Appr</h6>
+          <h5 class="mb-0">2</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+  <br>
 
           <!-- KPI Block List -->
           <div id="KPIupdateanchor">
             <h2 class="mt-4 ms-1">KPI List</h2>
-            <div class="kpi-list-box mt-4 px-3 px-md-4">
               <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+
                 <!-- Block 1 -->
                 <div class="col">
-                  <div class="card h-100 shadow-sm p-3">
+                  <div class="card h-100">
                     <div class="card-body d-flex flex-column">
                       <h5 class="card-title">
                         <a
                           href="staff-kpi-detail.html?id=1"
                           class="text-decoration-none card-title"
-                          >Increase Website Traffic</a
-                        >
+                          >Increase Website Traffic</a>
                       </h5>
                       <p><strong>Target:</strong> 30% increase</p>
                       <p><strong>Progress:</strong> 10%</p>
                       <p><strong>Status:</strong> In Progress</p>
+
+      <div class="mb-3 mt-2">
+  <strong>Approval Status:</strong>
+  <span class="badge bg-warning text-dark">Pending Approval</span>
+</div>
+
+
                       <div class="mb-2">
                         <strong> Percentage Completion:</strong> 33.33%
                         <div class="progress" style="height: 20px">
@@ -176,6 +308,12 @@
                       <p><strong>Target:</strong> 85%</p>
                       <p><strong>Progress:</strong> 60%</p>
                       <p><strong>Status:</strong> In Progress</p>
+
+      <div class="mb-3 mt-2">
+        <strong>Approval Status:</strong>
+        <span class="badge bg-light text-dark">No New Progress</span>
+      </div>
+
                       <div class="mb-2">
                         <strong> Percentage Completion:</strong> 70.59%
                         <div class="progress" style="height: 20px">
@@ -216,7 +354,13 @@
                       </h5>
                       <p><strong>Target:</strong> 12 posts</p>
                       <p><strong>Progress:</strong> 5 posts</p>
-                      <p><strong>Status:</strong> On Track</p>
+                      <p><strong>Status:</strong> In Progress</p>
+
+      <div class="mb-3 mt-2">
+        <strong>Approval Status:</strong>
+        <span class="badge bg-warning text-dark">Pending Approval</span>
+      </div>
+
                       <div class="mb-2">
                         <strong>Percentage Completion:</strong> 41.67%
                         <div class="progress" style="height: 20px">
@@ -258,6 +402,12 @@
                       <p><strong>Target:</strong> 300 responses</p>
                       <p><strong>Progress:</strong> 0 response</p>
                       <p><strong>Status:</strong> Not Started</p>
+
+      <div class="mb-3 mt-2">
+        <strong>Approval Status:</strong>
+        <span class="badge bg-light text-dark">No New Progress</span>
+      </div>
+
                       <div class="mb-2">
                         <strong>Percentage Completion:</strong> 0%
                         <div class="progress" style="height: 20px">
@@ -299,6 +449,12 @@
                       <p><strong>Target:</strong> 10 Connections</p>
                       <p><strong>Progress:</strong> 10 Connections</p>
                       <p><strong>Status:</strong> Completed</p>
+
+      <div class="mb-3 mt-2">
+        <strong>Approval Status:</strong>
+        <span class="badge bg-success text-dark">Approved</span>
+      </div>
+
                       <div class="mb-2">
                         <strong>Percentage Completion:</strong> 100%
                         <div class="progress" style="height: 20px">
@@ -326,7 +482,6 @@
                   </div>
                 </div>
               </div>
-            </div>
           </div>
 
           <!-- Modal for Progress Updated message -->

@@ -59,20 +59,24 @@
             <div class="col-md-4">
               <select id="filterStaff" class="form-select">
                 <option value="">Filter by Staff</option>
-                <option value="Pending">Ainul Husna</option>
-                <option value="Approved">Haziq Rahman</option>
-                <option value="Rejected">Harry Potter</option>
+                <option value="Ainul Husna">Ainul Husna</option>
+                <option value="Haziq Rahman">Haziq Rahman</option>
+                <option value="Harry Potter">Harry Potter</option>
+                <option value="Nur Aina">Nur Aina</option>
+                <option value="Harith Ismail">Harith Ismail</option>
               </select>
             </div>
 
             <div class="col-md-4">
               <select id="filterDepartment" class="form-select">
                 <option value="">Filter by Department</option>
-                <option value="Pending">Customer Service</option>
-                <option value="Approved">IT</option>
-                <option value="Rejected">Sales</option>
+                <option value="Customer Service">Customer Service</option>
+                <option value="IT">IT</option>
+                <option value="Sales">Sales</option>
+                <option value="HR">HR</option>
               </select>
             </div>
+
             <div class="col-md-4">
               <select id="filterStatus" class="form-select">
                 <option value="">Filter by Status</option>
@@ -83,43 +87,25 @@
             </div>
           </div>
 
-          <!-- KPI Table -->
-          <div class="table-responsive">
-            <table class="kpi-table" id="kpiTable">
-              <thead>
-                <tr>
-                  <th>KPI Title</th>
-                  <th>Description</th>
-                  <th>Staff Name</th>
-                  <th>Department</th>
-                  <th>Target Value</th>
-                  <th>Due Date</th>
-                  <th>Performance Indicators</th>
-                  <th>Updates</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- Will be dynamically inserted with manager-view-kpi.js -->
-              </tbody>
-            </table>
+          <!-- KPI Cards Container -->
+          <div class="row" id="kpiCardsContainer">
+            <!-- KPI cards will be inserted here via manager-view-kpi.js -->
+          </div>
 
-            <div class="text-end mt-4">
-              <a
-                href="manager-assign-kpi.html"
-                class="btn btn-teal"
-                style="font-weight: normal"
-                title="Assign New KPI"
-              >
-                Assign New KPI
-              </a>
-            </div>
+          <!-- Assign Button -->
+          <div class="text-end mt-4">
+            <a
+              href="manager-assign-kpi.html"
+              class="btn btn-teal"
+              style="font-weight: normal"
+              title="Assign New KPI"
+            >
+              Assign New KPI
+            </a>
           </div>
         </main>
       </div>
-      <!-- END row -->
     </div>
-    <!-- END container-fluid -->
 
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
 

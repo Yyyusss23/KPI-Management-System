@@ -334,3 +334,58 @@ html {
 .notification-item:hover {
   background-color: #f9fdfd;
 }
+
+/* Grid layout adjustments */
+#kpiCardsContainer .card {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#kpiCardsContainer .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+#kpiCardsContainer .card-body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.kpi-badge {
+  font-size: 0.85rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.kpi-label {
+  font-weight: 600;
+  color: #6c757d;
+  margin-right: 4px;
+}
+
+.kpi-value {
+  font-weight: 500;
+  color: #333;
+}
+
+.kpi-actions a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.kpi-actions a:hover {
+  text-decoration: underline;
+}
+
+.kpi-title a {
+  text-decoration: none;
+  color: #0d6efd;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.kpi-title a:hover {
+  text-decoration: underline;
+}
+

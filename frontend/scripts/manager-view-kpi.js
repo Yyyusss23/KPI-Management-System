@@ -1,39 +1,83 @@
-// manager-view-kpi.js
-
+// Get stored KPIs from localStorage
 const storedKpis = JSON.parse(localStorage.getItem("kpis")) || [];
-const kpiTableBody = document.querySelector("#kpiTable tbody");
 
-function renderTable(kpis) {
-  kpiTableBody.innerHTML = "";
+// DOM elements
+const kpiCardsContainer = document.getElementById("kpiCardsContainer");
+const filterStaff = document.getElementById("filterStaff");
+const filterDepartment = document.getElementById("filterDepartment");
+const filterStatus = document.getElementById("filterStatus");
+
+// Render KPI cards
+function renderCards(kpis) {
+  kpiCardsContainer.innerHTML = "";
+
+  if (kpis.length === 0) {
+    kpiCardsContainer.innerHTML = `
+      <div class="col-12 text-center mt-4">
+        <p class="text-muted">No KPIs match the selected filters.</p>
+      </div>
+    `;
+    return;
+  }
 
   kpis.forEach((kpi) => {
-    const tr = document.createElement("tr");
+    const card = document.createElement("div");
+    card.className = "col-md-6 col-lg-4 mb-4";
 
-    tr.innerHTML = `
-      <td><a href="manager-kpi-detail.html?id=${kpi.id}">${kpi.title}</a></td>
-      <td>${kpi.description}</td>
-      <td>${kpi.staffName}</td>
-      <td>${kpi.department}</td>
-      <td>${kpi.targetValue}</td>
-      <td>${kpi.dueDate}</td>
-      <td>${kpi.performanceIndicator}</td>
-      <td>${
-        kpi.status.toLowerCase() === "pending"
-          ? `<a href="manager-view-evidence.html?id=${kpi.id}">Review</a>`
-          : ""
-      }</td>      
-      
-      <td>
-        <span class="badge bg-${getStatusColor(kpi.status)}">${
-      kpi.status
-    }</span>
-      </td>
+    // Determine the progress percentage based on the progressStatus
+    let progressPercentage = 0;
+    let progressText = "";
+    switch (kpi.progressStatus.toLowerCase()) {
+      case "completed":
+        progressPercentage = 100;
+        progressText = "Completed";
+        break;
+      case "in progress":
+        progressPercentage = 50;
+        progressText = "In Progress";
+        break;
+      case "not started":
+        progressPercentage = 0;
+        progressText = "Not Started";
+        break;
+    }
+
+    card.innerHTML = `
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div>
+            <h5 class="card-title">
+              <a href="manager-kpi-detail.html?id=${kpi.id}" class="text-decoration-none text-dark">
+                ${kpi.title}
+              </a>
+            </h5>
+            <p class="card-text"><strong>Description:</strong> ${kpi.description}</p>
+            <p class="card-text"><strong>Staff:</strong> ${kpi.staffName}</p>
+            <p class="card-text"><strong>Department:</strong> ${kpi.department}</p>
+            <p class="card-text"><strong>Target:</strong> ${kpi.targetValue}</p>
+            <p class="card-text"><strong>Due Date:</strong> ${kpi.dueDate}</p>
+            <p class="card-text"><strong>Indicators:</strong> ${kpi.performanceIndicator}</p>
+            <p class="card-text"><strong>Progress:</strong> ${progressText}</p>
+            <div class="progress" style="height: 20px;">
+              <div class="progress-bar" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100" style="width: ${progressPercentage}%;"></div>
+            </div>
+          </div>
+          <div class="mt-3 d-flex justify-content-between align-items-center">
+            ${kpi.status.toLowerCase() === "pending"
+              ? `<a href="manager-view-evidence.html?id=${kpi.id}" class="btn btn-sm btn-outline-primary">Review</a>`
+              : `<span></span>`
+            }
+            <span class="badge bg-${getStatusColor(kpi.status)}">${kpi.status}</span>
+          </div>
+        </div>
+      </div>
     `;
 
-    kpiTableBody.appendChild(tr);
+    kpiCardsContainer.appendChild(card);
   });
 }
 
+// Determine status color
 function getStatusColor(status) {
   switch (status.toLowerCase()) {
     case "approved":
@@ -41,34 +85,31 @@ function getStatusColor(status) {
     case "rejected":
       return "danger";
     case "pending":
-      return "warning text-white";
+      return "warning text-dark";
     default:
       return "secondary";
   }
 }
 
-renderTable(storedKpis);
+// Filter logic
+function applyFilters() {
+  const staff = filterStaff.value.toLowerCase();
+  const department = filterDepartment.value.toLowerCase();
+  const status = filterStatus.value.toLowerCase();
 
-// Flilter functionality
-// TODO: Filter logic here cannot work properly
-const filterStaff = document.getElementById("filterStaff");
-const filterDepartment = document.getElementById("filterDepartment");
-const filterStatus = document.getElementById("filterStatus");
+  const filtered = storedKpis.filter((kpi) =>
+    (staff === "" || kpi.staffName.toLowerCase().includes(staff)) &&
+    (department === "" || kpi.department.toLowerCase().includes(department)) &&
+    (status === "" || kpi.status.toLowerCase().includes(status))
+  );
 
+  renderCards(filtered);
+}
+
+// Add event listeners
 [filterStaff, filterDepartment, filterStatus].forEach((input) => {
-  input.addEventListener("input", () => {
-    const staff = filterStaff.value.toLowerCase();
-    const department = filterDepartment.value.toLowerCase();
-    const status = filterStatus.value.toLowerCase();
-
-    const filtered = storedKpis.filter(
-      (kpi) =>
-        kpi.staffName.toLowerCase().includes(staff) &&
-        (kpi.department?.toLowerCase().includes(department) ||
-          department === "") &&
-        (kpi.status.toLowerCase().includes(status) || status === "")
-    );
-
-    renderTable(filtered);
-  });
+  input.addEventListener("input", applyFilters);
 });
+
+// Initial render
+renderCards(storedKpis);

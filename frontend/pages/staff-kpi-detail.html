@@ -172,10 +172,10 @@
     </div>
 
     <script>
-      document.getElementById('updateForm').addEventListener('submit', function(e) {
-  e.preventDefault(); // prevent actual form submission
+    document.getElementById('updateForm').addEventListener('submit', function(e) {
+  e.preventDefault();
 
-  // Collect form field values
+  // Collect values
   const progressInput = document.getElementById('progressInput').value.trim();
   const progressNote = document.getElementById('progressNote').value.trim();
   const fileUpload = document.getElementById('fileUpload').value.trim();
@@ -187,9 +187,9 @@
     return;
   }
 
-  // If all fields are filled, you can proceed with form submission logic here
-  alert('✅ Progress submitted successfully!');
-  // this.submit(); // or whatever action you want to trigger
+  // When submission is successful:
+localStorage.setItem('kpiSubmitted', 'true');
+window.location.href = 'staff-view-kpi.html';
 });
 
     </script>

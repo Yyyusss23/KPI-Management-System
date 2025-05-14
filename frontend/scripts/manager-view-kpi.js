@@ -1,5 +1,7 @@
-// Get stored KPIs from localStorage
-const storedKpis = JSON.parse(localStorage.getItem("kpis")) || [];
+// Always retrieve fresh KPIs from localStorage
+function getStoredKpis() {
+  return JSON.parse(localStorage.getItem("kpis")) || [];
+}
 
 // DOM elements
 const kpiCardsContainer = document.getElementById("kpiCardsContainer");
@@ -27,7 +29,7 @@ function renderCards(kpis) {
     // Determine the progress percentage based on the progressStatus
     let progressPercentage = 0;
     let progressText = "";
-    switch (kpi.progressStatus.toLowerCase()) {
+    switch (kpi.progressStatus?.toLowerCase()) {
       case "completed":
         progressPercentage = 100;
         progressText = "Completed";
@@ -55,6 +57,7 @@ function renderCards(kpis) {
             <p class="card-text"><strong>Staff:</strong> ${kpi.staffName}</p>
             <p class="card-text"><strong>Department:</strong> ${kpi.department}</p>
             <p class="card-text"><strong>Target:</strong> ${kpi.targetValue}</p>
+            <p class="card-text"><strong>Progress:</strong> ${kpi.progress}</p>
             <p class="card-text"><strong>Due Date:</strong> ${kpi.dueDate}</p>
             <p class="card-text"><strong>Indicators:</strong> ${kpi.performanceIndicator}</p>
             <p class="card-text"><strong>Progress:</strong> ${progressText}</p>
@@ -63,7 +66,7 @@ function renderCards(kpis) {
             </div>
           </div>
           <div class="mt-3 d-flex justify-content-between align-items-center">
-            ${kpi.status.toLowerCase() === "pending"
+            ${kpi.status?.toLowerCase() === "pending"
               ? `<a href="manager-view-evidence.html?id=${kpi.id}" class="btn btn-sm btn-outline-primary">Review</a>`
               : `<span></span>`
             }
@@ -79,7 +82,7 @@ function renderCards(kpis) {
 
 // Determine status color
 function getStatusColor(status) {
-  switch (status.toLowerCase()) {
+  switch (status?.toLowerCase()) {
     case "approved":
       return "success";
     case "rejected":
@@ -97,7 +100,9 @@ function applyFilters() {
   const department = filterDepartment.value.toLowerCase();
   const status = filterStatus.value.toLowerCase();
 
-  const filtered = storedKpis.filter((kpi) =>
+  const kpis = getStoredKpis();
+
+  const filtered = kpis.filter((kpi) =>
     (staff === "" || kpi.staffName.toLowerCase().includes(staff)) &&
     (department === "" || kpi.department.toLowerCase().includes(department)) &&
     (status === "" || kpi.status.toLowerCase().includes(status))
@@ -111,5 +116,11 @@ function applyFilters() {
   input.addEventListener("input", applyFilters);
 });
 
-// Initial render
-renderCards(storedKpis);
+// Initial render using localStorage
+renderCards(getStoredKpis());
+
+//RESET PURPOSE!! PLS DELETE ONCE BACKEND IS ESTABLISHED!!!
+document.getElementById("BTN-RESET").addEventListener("click", function () {
+    localStorage.setItem("kpis", JSON.stringify(sampleKPIs));
+    window.location.reload();  // Reload the page to re-render with new data
+});

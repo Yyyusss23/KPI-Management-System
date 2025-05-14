@@ -80,11 +80,11 @@ const kpiData = [
     title: "Product Feature Rollout",
     description: "Deploy new product feature to 100% of users",
     target: "100% deployment",
-    progress: "100%",
-    completion: "100%",
+    progress: "70%",
+    completion: "70%",
     startDate: "2025-01-15",
     dueDate: "2025-04-15",
-    status: "Completed",
+    status: "In Progress",
     approvalstat: "Approved"
   },
   {
@@ -140,7 +140,7 @@ kpiData.forEach(kpi => {
 
         <div class="mb-3">
           <strong>Approval Status:</strong>
-          <span class="badge ${getApprovalBadgeClass(kpi.approvalstat)}">${kpi.approvalstat}</span>
+          <span class="badge ${getApprovalBadgeClass(kpi.approvalstat) }">${kpi.approvalstat}</span>
         </div>
 
         <div class="mb-4">
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div class="mb-3">
             <strong>Approval Status:</strong>
-            <span class="badge ${getApprovalBadgeClass(kpi.approvalstat)}">${kpi.approvalstat}</span>
+            <span class="small-badge ${getApprovalBadgeClass(kpi.approvalstat)}">${kpi.approvalstat}</span>
           </div>
 
           <div class="mb-4">

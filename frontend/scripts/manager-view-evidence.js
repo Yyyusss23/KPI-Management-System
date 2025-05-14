@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("kpi-staff").textContent = kpi.staffName;
   document.getElementById("kpi-status").textContent = kpi.status;
   document.getElementById("kpi-evidence").textContent = kpi.evidence[0]?.file || "No evidence file";;
-  document.getElementById("gva-actual").textContent = `${kpi.progress}`;
+  document.getElementById("gva-actual").textContent = `${kpi.currentValue}`;
   document.getElementById("gva-target").textContent = `/${kpi.targetValue}`;
 
   // Open the evidence file
@@ -66,8 +66,8 @@ downloadLink.addEventListener("click", function (e) {
     } else {
       const newValue = document.querySelector("#gva-actual input").value;  // Get the input value
       document.getElementById("gva-actual").innerHTML = `${newValue}`;  // Update the DOM
-      kpi.progress = parseFloat(newValue);  // Update the kpi's progress with the new value
-      const progressPercentage = kpi.progress / kpi.targetValue;
+      kpi.currentValue = parseFloat(newValue);  // Update the kpi's progress with the new value
+      const progressPercentage = kpi.currentValue / kpi.targetValue;
       if (progressPercentage == 1)
         kpi.progressStatus = "Completed"
       else if (progressPercentage < 1 && progressPercentage > 0)

@@ -57,7 +57,7 @@ function renderCards(kpis) {
             <p class="card-text"><strong>Staff:</strong> ${kpi.staffName}</p>
             <p class="card-text"><strong>Department:</strong> ${kpi.department}</p>
             <p class="card-text"><strong>Target:</strong> ${kpi.targetValue}</p>
-            <p class="card-text"><strong>Progress:</strong> ${kpi.progress}</p>
+            <p class="card-text"><strong>Current:</strong> ${kpi.currentValue}</p>
             <p class="card-text"><strong>Due Date:</strong> ${kpi.dueDate}</p>
             <p class="card-text"><strong>Indicators:</strong> ${kpi.performanceIndicator}</p>
             <p class="card-text"><strong>Progress:</strong> ${progressText}</p>

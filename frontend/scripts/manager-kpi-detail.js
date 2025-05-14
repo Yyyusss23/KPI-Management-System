@@ -5,7 +5,7 @@ const kpi = kpis.find(k => k.id === kpiId);
 
 document.querySelector(".card-title").textContent = kpi.title;
 document.getElementById("kpi-target").textContent = kpi.targetValue;
-document.getElementById("kpi-progress").textContent = kpi.progress;
+document.getElementById("kpi-current").textContent = kpi.currentValue;
 document.getElementById("kpi-staff").textContent = kpi.staffName;
 document.getElementById("kpi-status").textContent = kpi.status;
 document.getElementById("kpi-dueDate").textContent = kpi.dueDate;

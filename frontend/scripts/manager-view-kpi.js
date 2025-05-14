@@ -19,7 +19,6 @@ function renderCards(kpis) {
     `;
     return;
   }
-  
 
   kpis.forEach((kpi) => {
     const card = document.createElement("div");
@@ -48,7 +47,7 @@ function renderCards(kpis) {
         <div class="card-body d-flex flex-column justify-content-between">
           <div>
             <h5 class="card-title">
-              <a href="manager-kpi-detail.html?id=${kpi.id}" class="text-decoration-none text-dark">
+              <a href="manager-kpi-detail.html?id=${kpi.id}" class="text-decoration-none text-primary">
                 ${kpi.title}
               </a>
             </h5>

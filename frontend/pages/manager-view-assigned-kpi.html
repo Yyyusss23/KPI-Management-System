@@ -56,12 +56,21 @@
 
         <!-- Main Content -->
         <main class="col-12 col-md-10 px-4" id="main-content">
-          <h1 class="mt-4">View Assigned KPIs</h1>
+          <div class="mt-4">
+            <h1 class="mb-3">View Assigned KPIs</h1>
+            <a
+              href="manager-assign-kpi.html"
+              class="btn btn-teal btn-lg mb-4"
+              title="Assign New KPI"
+            >
+              Assign New KPI
+            </a>
+          </div>
 
           <!-- Filters -->
-          <div class="row g-3 mt-3 mb-4">
+          <div class="row g-3 mb-4 filter-boxes">
             <div class="col-md-4">
-              <select id="filterStaff" class="form-select">
+              <select id="filterStaff" class="form-select fs-5">
                 <option value="">Filter by Staff</option>
                 <option value="Ainul Husna">Ainul Husna</option>
                 <option value="Haziq Rahman">Haziq Rahman</option>
@@ -72,7 +81,7 @@
             </div>
 
             <div class="col-md-4">
-              <select id="filterDepartment" class="form-select">
+              <select id="filterDepartment" class="form-select fs-5">
                 <option value="">Filter by Department</option>
                 <option value="Customer Service">Customer Service</option>
                 <option value="IT">IT</option>
@@ -82,7 +91,7 @@
             </div>
 
             <div class="col-md-4">
-              <select id="filterStatus" class="form-select">
+              <select id="filterStatus" class="form-select fs-5">
                 <option value="">Filter by Status</option>
                 <option value="Pending">Pending</option>
                 <option value="Approved">Approved</option>
@@ -95,18 +104,6 @@
           <div class="row" id="kpiCardsContainer">
             <!-- KPI cards will be inserted here via manager-view-kpi.js -->
           </div>
-
-          <!-- Assign Button -->
-          <div class="text-end mt-4">
-            <a
-              href="manager-assign-kpi.html"
-              class="btn btn-teal"
-              style="font-weight: normal"
-              title="Assign New KPI"
-            >
-              Assign New KPI
-            </a>
-          </div>
         </main>
       </div>
     </div>
@@ -118,5 +115,4 @@
     <script src="../scripts/sample-data.js"></script>
     <script src="../scripts/manager-view-kpi.js"></script>
   </body>
-  
 </html>

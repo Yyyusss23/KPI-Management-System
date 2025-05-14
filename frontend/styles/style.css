@@ -408,8 +408,13 @@ html {
 }
 
 /* General font size */
-body, .form-select, .card-text, .card-title, .btn {
+body, .form-select, .card-text {
   font-size: 18px;
+}
+
+/* General font size */
+body, .btn {
+  font-size: 17px;
 }
 
 /* Assign Button Style */
@@ -432,6 +437,12 @@ body, .form-select, .card-text, .card-title, .btn {
 .badge {
   font-size: 16px;
   padding: 0.5em 0.75em;
+}
+
+.small-badge {
+  font-size: 13px;
+  padding: 0.4em 0.5em;
+  border-radius: 0.375rem;
 }
 
 /* Optional: Increase spacing between cards */

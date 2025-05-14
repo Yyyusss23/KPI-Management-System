@@ -69,20 +69,20 @@
 
           <div class="row mt-4">
             <div class="col-md-4">
-              <div class="card">
+              <div class="card" style="height: 440px;">
                 <div class="card-body">
                   <h5 class="text-teal">Overall Progress</h5>
-                  <canvas id="kpiProgressChart" height="240"></canvas>
+                  <canvas id="kpiProgressChart" height="100%"></canvas>
                 </div>
               </div>
             </div>
 
             <!-- Area Chart -->
   <div class="col-md-6">
-    <div class="card shadow-sm">
+    <div class="card shadow-sm" style="height: 440px;">
       <div class="card-body">
         <h5 class="text-teal">Monthly Progress</h5>
-        <canvas id="kpiAreaChart" height="188"></canvas>
+        <canvas id="kpiAreaChart" height="190px"></canvas>
       </div>
     </div>
   </div>
@@ -248,10 +248,10 @@ new Chart(areaCtx, {
 
           <!-- KPI Block List -->
           <div id="KPIupdateanchor">
-            <h1 class="mt-4 ms-1">KPI List</h1><br>
+            <h1 class="mt-1 ms-1">KPI List</h1>
 
             <!-- Filter Box -->
-<div class="d-flex mb-3">
+<div class="d-flex mb-3 mt-3">
   <select id="statusFilter" class="form-select w-auto shadow-sm">
     <option value="All">All</option>
     <option value="Completed">Completed</option>
@@ -288,7 +288,7 @@ new Chart(areaCtx, {
       alertBox.classList.remove('show');  // fade it out
       alertBox.classList.add('fade');     // optional fade effect
       setTimeout(() => alertBox.remove(), 500);  // remove from DOM after fade
-    }, 7000);
+    }, 5000);
 
     // Remove the flag after showing
     localStorage.removeItem('kpiSubmitted');

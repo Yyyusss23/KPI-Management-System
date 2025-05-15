@@ -453,3 +453,13 @@ body, .btn {
   font-size: 18px;
 }
 
+#BTN-RESET{
+  height: 40px;
+  width: 30px;
+  background: none;
+  border: none;
+  color: transparent;
+  cursor: default;
+  padding: 0;
+  margin: 0;
+}

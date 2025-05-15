@@ -1,8 +1,3 @@
-
-if (!localStorage.getItem("kpis")) {
-  localStorage.setItem("kpis", JSON.stringify(sampleKPIs));
-}
-
 // Sample KPI data loaded into manager-view-kpi.html, manager-view-evidence.html, and manager-kpi-detail.html
 const sampleKPIs = [
   {
@@ -12,6 +7,7 @@ const sampleKPIs = [
     staffName: "Ainul Husna",
     department: "Customer Service",
     targetValue: 90, // numeric value instead of "90%"
+    currentValue: 0,
     dueDate: "2025-06-30",
     performanceIndicator: "CSAT survey scores",
     status: "Pending",
@@ -32,6 +28,7 @@ const sampleKPIs = [
     staffName: "Harith Ismail",
     department: "IT",
     targetValue: 99.9, // numeric value instead of "99.9%"
+    currentValue: 65,
     dueDate: "2025-12-30",
     performanceIndicator: "Server monitoring logs",
     status: "Approved",
@@ -52,6 +49,7 @@ const sampleKPIs = [
     staffName: "Harry Potter",
     department: "Sales",
     targetValue: 20, // numeric value instead of "20%"
+    currentValue: 15,
     dueDate: "2025-09-30",
     performanceIndicator: "Monthly sales report",
     status: "Pending",
@@ -60,7 +58,7 @@ const sampleKPIs = [
       {
         date: "2025-04-01",
         description: "Submitted sales report",
-        file: "example.pdf",
+        file: "example2.pdf",
         status: "Pending",
       },
     ],
@@ -72,6 +70,7 @@ const sampleKPIs = [
     staffName: "Haziq Rahman",
     department: "Sales",
     targetValue: 1, // 1 represents 'Launch completed'
+    currentValue: 1,
     dueDate: "2025-07-15",
     performanceIndicator: "Product development milestones",
     status: "Approved",
@@ -92,6 +91,7 @@ const sampleKPIs = [
     staffName: "Nur Aina",
     department: "HR",
     targetValue: 100, // 100% attendance → 100
+    currentValue: 0,
     dueDate: "2025-06-15",
     performanceIndicator: "Training attendance sheets",
     status: "Pending",
@@ -112,6 +112,7 @@ const sampleKPIs = [
     staffName: "Ainul Husna",
     department: "Customer Service",
     targetValue: 30, // numeric value instead of "30%"
+    currentValue: 0,
     dueDate: "2025-07-2",
     performanceIndicator: "Customer feedback records",
     status: "Rejected",
@@ -127,5 +128,3 @@ const sampleKPIs = [
   }
 ];
 
-
-localStorage.setItem("kpis", JSON.stringify(sampleKPIs));

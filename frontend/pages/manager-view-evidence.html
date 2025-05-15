@@ -82,7 +82,7 @@
                 <p id="kpi-status"></p>
 
                 <p class="text-teal fw-bold mb-1">Evidence:</p>
-                <p id="kpi-evidence"></p>
+                <a href="#" id="kpi-evidence"></a>
 
                 <p class="text-teal fw-bold mb-1">GvA:</p>
                 <div class="d-flex align-items-center">
@@ -115,8 +115,8 @@
             <!-- TODO: ADD FUNCTIONALITY TO BUTTONS -->
             <!-- Claim: For further backend functionality, I use dynamic kpi info load (sample-data.js) and delete the rejected/approved page since idk how to deal with the logic (status in the static .js file cannot be edited) -->
             <div class="d-flex justify-content-between mt-4">
-              <a href="#" class="btn btn-teal">APPROVE</a>
-              <a href="#" class="btn btn-danger">REJECT</a>
+              <button id = "Btn-Approve" class="btn btn-teal">APPROVE</button>
+              <button id = "Btn-Reject" class="btn btn-danger">REJECT</button>
             </div>
           </div>
         </main>
@@ -129,5 +129,6 @@
     <!-- View Evidence -->
     <script src="../scripts/sample-data.js"></script>
     <script src="../scripts/manager-view-evidence.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   </body>
 </html>

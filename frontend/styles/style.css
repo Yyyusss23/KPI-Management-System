@@ -155,6 +155,12 @@ main {
   max-height: 350px;
 }
 
+#managerKpiStatusChart,
+#managerKpiChart {
+  height: 400px !important;
+  max-height: 400px;
+}
+
 /* Buttons */
 .btn-teal {
   background-color: var(--teal-blue);

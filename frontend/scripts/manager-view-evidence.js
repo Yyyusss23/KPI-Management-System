@@ -56,13 +56,13 @@ document.getElementById("Btn-GvA-Edit").addEventListener("click", function() {
   const gvAValue = document.getElementById("gva-actual").innerText;
   const splitValue = gvAValue.split("/");
 
-  if (this.innerText === "EDIT") {
+  if (this.innerText === "Edit") {
     const input = document.createElement("input");
     input.type = "number";
     input.value = splitValue[0];  // Current progress value
     document.getElementById("gva-actual").innerHTML = '';  // Clear the current value
     document.getElementById("gva-actual").appendChild(input);  // Append the input
-    this.innerText = "DONE";  // Change button to DONE
+    this.innerText = "Done";  // Change button to DONE
   } else {
     const newValue = document.querySelector("#gva-actual input").value;  // Get the input value
     document.getElementById("gva-actual").innerHTML = `${newValue}`;  // Update the DOM
@@ -72,7 +72,7 @@ document.getElementById("Btn-GvA-Edit").addEventListener("click", function() {
       kpi.progressStatus = "Completed"
     else if (progressPercentage < 1 && progressPercentage > 0)
       kpi.progressStatus = "In Progress"
-    this.innerText = "EDIT";  // Change button back to EDIT
+    this.innerText = "Edit";  // Change button back to EDIT
   }
 });
 

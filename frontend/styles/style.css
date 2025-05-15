@@ -10,11 +10,13 @@ h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 800;
 }
+
 h2 {
   font-family: Arial, sans-serif;
   font-weight: 500;
   margin-top: 30px;
 }
+
 body {
   font-family: Arial, sans-serif;
   background-color: var(--light-gray);
@@ -145,6 +147,18 @@ main {
 
 .card-body {
   padding: 15px;
+}
+
+#staffProgressChart,
+#staffScoreTrendChart {
+  height: 350px !important;
+  max-height: 350px;
+}
+
+#managerKpiStatusChart,
+#managerKpiChart {
+  height: 380px !important;
+  max-height: 380px;
 }
 
 /* Buttons */
@@ -482,9 +496,9 @@ body,
 }
 
 @media (max-width: 768px) {
+
   .custom-kpi-card .card-title,
   .custom-kpi-card .mb-0 {
     font-size: 1rem;
   }
 }
-

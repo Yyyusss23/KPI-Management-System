@@ -18,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../styles/style.css" />
     
 
     <style>
@@ -29,19 +30,20 @@
         height: 100vh;
       }
       .login-card {
-        max-width: 400px;
+        max-width: 800px;
         width: 100%;
         padding: 2rem;
         background: white;
         border-radius: 10px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        font-size: 18px;
       }
     </style>
   </head>
 
   <body>
     <div class="login-card">
-      <h3 class="text-center mb-4">KPI Management System</h3>
+      <h1 class="text-center mb-4">KPI Management System</h1>
 
       <form id="loginForm">
         <div class="mb-3">
@@ -67,7 +69,7 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Login as:</label>
+          <label class="form-label">Login as</label>
           <select class="form-select" id="role" required>
             <option value="">Select Role</option>
             <option value="manager">Manager</option>
@@ -76,13 +78,13 @@
         </div>
 
         <div class="d-grid mb-3">
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" class="btn btn-success">Login</button>
         </div>
 
         <!-- Register Link Here -->
         <div class="text-center">
           <p class="mb-0">Don't have an account?</p>
-          <a href="user-register.html" class="btn btn-link">Register Here</a>
+          <a href="user-register.html" class="btn btn-link">Register</a>
         </div>
       </form>
     </div>

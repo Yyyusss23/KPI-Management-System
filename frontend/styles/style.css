@@ -157,8 +157,8 @@ main {
 
 #managerKpiStatusChart,
 #managerKpiChart {
-  height: 400px !important;
-  max-height: 400px;
+  height: 380px !important;
+  max-height: 380px;
 }
 
 /* Buttons */

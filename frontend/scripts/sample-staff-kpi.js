@@ -1,6 +1,5 @@
-
-    const params = new URLSearchParams(window.location.search);
-    const kpiId = params.get('id');
+const params = new URLSearchParams(window.location.search);
+const kpiId = params.get('id');
 
 const kpiData = [
   {

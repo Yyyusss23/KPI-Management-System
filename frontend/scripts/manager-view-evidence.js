@@ -51,59 +51,59 @@ downloadLink.addEventListener("click", function (e) {
 });
 
 
-  // EDIT/DONE button functionality
-  document.getElementById("Btn-GvA-Edit").addEventListener("click", function() {
-    const gvAValue = document.getElementById("gva-actual").innerText;
-    const splitValue = gvAValue.split("/");
+// EDIT/DONE button functionality
+document.getElementById("Btn-GvA-Edit").addEventListener("click", function() {
+  const gvAValue = document.getElementById("gva-actual").innerText;
+  const splitValue = gvAValue.split("/");
 
-    if (this.innerText === "EDIT") {
-      const input = document.createElement("input");
-      input.type = "number";
-      input.value = splitValue[0];  // Current progress value
-      document.getElementById("gva-actual").innerHTML = '';  // Clear the current value
-      document.getElementById("gva-actual").appendChild(input);  // Append the input
-      this.innerText = "DONE";  // Change button to DONE
-    } else {
-      const newValue = document.querySelector("#gva-actual input").value;  // Get the input value
-      document.getElementById("gva-actual").innerHTML = `${newValue}`;  // Update the DOM
-      kpi.currentValue = parseFloat(newValue);  // Update the kpi's progress with the new value
-      const progressPercentage = kpi.currentValue / kpi.targetValue;
-      if (progressPercentage == 1)
-        kpi.progressStatus = "Completed"
-      else if (progressPercentage < 1 && progressPercentage > 0)
-        kpi.progressStatus = "In Progress"
-      this.innerText = "EDIT";  // Change button back to EDIT
-    }
+  if (this.innerText === "EDIT") {
+    const input = document.createElement("input");
+    input.type = "number";
+    input.value = splitValue[0];  // Current progress value
+    document.getElementById("gva-actual").innerHTML = '';  // Clear the current value
+    document.getElementById("gva-actual").appendChild(input);  // Append the input
+    this.innerText = "DONE";  // Change button to DONE
+  } else {
+    const newValue = document.querySelector("#gva-actual input").value;  // Get the input value
+    document.getElementById("gva-actual").innerHTML = `${newValue}`;  // Update the DOM
+    kpi.currentValue = parseFloat(newValue);  // Update the kpi's progress with the new value
+    const progressPercentage = kpi.currentValue / kpi.targetValue;
+    if (progressPercentage == 1)
+      kpi.progressStatus = "Completed"
+    else if (progressPercentage < 1 && progressPercentage > 0)
+      kpi.progressStatus = "In Progress"
+    this.innerText = "EDIT";  // Change button back to EDIT
+  }
+});
+
+// Approve button functionality
+document.getElementById("Btn-Approve").addEventListener("click", function () {
+  kpi.status = "Approved";  // Change the KPI's status to "Approved"
+  
+  // Find the index of the KPI in the kpis array
+  const index = kpis.findIndex(k => k.id === kpiId);
+  if (index !== -1) {
+    kpis[index] = kpi;  // Update the KPI in the kpis array
+    localStorage.setItem("kpis", JSON.stringify(kpis));  // Save the updated kpis array back to localStorage
+  }
+
+  // Redirect to another page
+  window.location.href = "manager-view-assigned-kpi.html";
+});
+
+// Reject button functionality
+document.getElementById("Btn-Reject").addEventListener("click", function () {
+  kpi.status = "Rejected";  // Change the KPI's status to "Rejected"
+
+  // Find the index of the KPI in the kpis array
+  const index = kpis.findIndex(k => k.id === kpiId);
+  if (index !== -1) {
+    kpis[index] = kpi;  // Update the KPI in the kpis array
+    localStorage.setItem("kpis", JSON.stringify(kpis));  // Save the updated kpis array back to localStorage
+  }
+
+  // Redirect to another page
+  window.location.href = "manager-view-assigned-kpi.html";
   });
-
-  // Approve button functionality
-  document.getElementById("Btn-Approve").addEventListener("click", function () {
-    kpi.status = "Approved";  // Change the KPI's status to "Approved"
-    
-    // Find the index of the KPI in the kpis array
-    const index = kpis.findIndex(k => k.id === kpiId);
-    if (index !== -1) {
-      kpis[index] = kpi;  // Update the KPI in the kpis array
-      localStorage.setItem("kpis", JSON.stringify(kpis));  // Save the updated kpis array back to localStorage
-    }
-
-    // Redirect to another page
-    window.location.href = "manager-view-assigned-kpi.html";
-  });
-
-  // Reject button functionality
-  document.getElementById("Btn-Reject").addEventListener("click", function () {
-    kpi.status = "Rejected";  // Change the KPI's status to "Rejected"
-
-    // Find the index of the KPI in the kpis array
-    const index = kpis.findIndex(k => k.id === kpiId);
-    if (index !== -1) {
-      kpis[index] = kpi;  // Update the KPI in the kpis array
-      localStorage.setItem("kpis", JSON.stringify(kpis));  // Save the updated kpis array back to localStorage
-    }
-
-    // Redirect to another page
-    window.location.href = "manager-view-assigned-kpi.html";
-    });
 });
 

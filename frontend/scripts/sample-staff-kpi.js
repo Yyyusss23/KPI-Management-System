@@ -100,7 +100,7 @@ const kpiData = [
   }
 ];
 
-    document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
   const kpiCardsContainer = document.getElementById("kpiCardsContainerStaff");
 
   kpis.forEach(kpi => {
@@ -257,10 +257,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 
-  // Initial render (show all)
-  renderKPICards('All');
+// Initial render (show all)
+renderKPICards('All');
 
-  // Filter on change
-  statusFilter.addEventListener('change', () => {
-    renderKPICards(statusFilter.value);
-  });
+// Filter on change
+statusFilter.addEventListener('change', () => {
+  renderKPICards(statusFilter.value);
+});

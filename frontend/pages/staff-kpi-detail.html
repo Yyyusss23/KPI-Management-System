@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KPI Progress Update</title>
+    <title>KPI Management System</title>
     <link rel="icon" href="../assets/images/logo.png" />
 
     <!-- Bootstrap 5 CSS -->
@@ -60,9 +60,9 @@
 
         <!-- Main Content -->
         <main class="col-12 col-md-10 px-4" id="main-content">
-          <h1 class="mt-4 ms-1 mb-8">KPI Progress Update</h1>
+          <h1 class="mt-4 ms-1 mb-2">KPI Progress Update</h1>
 
-          <div class="card mt-20 mb-4">
+          <div class="card mb-4">
             <div class="card-body">
               <h5 id="kpiTitle" class="card-title"></h5>
               <p>
@@ -172,26 +172,31 @@
     </div>
 
     <script>
-    document.getElementById('updateForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+      document
+        .getElementById("updateForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
 
-  // Collect values
-  const progressInput = document.getElementById('progressInput').value.trim();
-  const progressNote = document.getElementById('progressNote').value.trim();
-  const fileUpload = document.getElementById('fileUpload').value.trim();
-  const fileNote = document.getElementById('fileNote').value.trim();
+          // Collect values
+          const progressInput = document
+            .getElementById("progressInput")
+            .value.trim();
+          const progressNote = document
+            .getElementById("progressNote")
+            .value.trim();
+          const fileUpload = document.getElementById("fileUpload").value.trim();
+          const fileNote = document.getElementById("fileNote").value.trim();
 
-  // Check if any field is empty
-  if (!progressInput || !progressNote || !fileUpload || !fileNote) {
-    alert('⚠️ Please fill all the details before submitting.');
-    return;
-  }
+          // Check if any field is empty
+          if (!progressInput || !progressNote || !fileUpload || !fileNote) {
+            alert("⚠️ Please fill all the details before submitting.");
+            return;
+          }
 
-  // When submission is successful:
-localStorage.setItem('kpiSubmitted', 'true');
-window.location.href = 'staff-view-kpi.html';
-});
-
+          // When submission is successful:
+          localStorage.setItem("kpiSubmitted", "true");
+          window.location.href = "staff-view-kpi.html";
+        });
     </script>
 
     <div id="sidebarOverlay" class="sidebar-overlay"></div>

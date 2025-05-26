@@ -94,7 +94,7 @@ Use one of the following `type` values:
 * `chore`: Maintenance tasks (build process, dependency updates, etc)
 * `revert`: Revert to a previous commit
 
-### Scope
+#### Scope
 
 Use one of the following as a `scope`:
 
@@ -115,7 +115,7 @@ Use one of the following as a `scope`:
 * No period at the end
 * Keep it concise (under 72 characters)
 
-### Example
+#### Example
 
 * Config/Middleware
   * `chore(config): setup MongoDB connection and environment config`

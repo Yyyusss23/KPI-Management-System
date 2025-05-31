@@ -1,0 +1,37 @@
+[
+  {
+    "_id": { "$oid": "6659fa9fb6e1c2cf81e362a1" },
+    "name": "Alice Manager",
+    "email": "alice.manager@example.com",
+    "password": 123,
+    "role": "manager"
+  },
+  {
+    "_id": { "$oid": "6659fa9fb6e1c2cf81e362a2" },
+    "name": "Bob Manager",
+    "email": "bob.manager@example.com",
+    "password": 123,
+    "role": "manager"
+  },
+  {
+    "_id": { "$oid": "6659fa9fb6e1c2cf81e362b1" },
+    "name": "Charlie Staff",
+    "email": "charlie.staff@example.com",
+    "password": 123,
+    "role": "staff"
+  },
+  {
+    "_id": { "$oid": "6659fa9fb6e1c2cf81e362b2" },
+    "name": "Diana Staff",
+    "email": "diana.staff@example.com",
+    "password": 123,
+    "role": "staff"
+  },
+  {
+    "_id": { "$oid": "6659fa9fb6e1c2cf81e362b3" },
+    "name": "Ethan Staff",
+    "email": "ethan.staff@example.com",
+    "password": 123,
+    "role": "staff"
+  }
+]

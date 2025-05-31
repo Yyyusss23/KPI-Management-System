@@ -1,0 +1,26 @@
+{
+  "name": "kpi-management-system",
+  "version": "1.0.0",
+  "description": "*WIF2003 Web Programming Assignment Owned By T1G6*",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Auni07/KPI-Management-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Auni07/KPI-Management-System/issues"
+  },
+  "homepage": "https://github.com/Auni07/KPI-Management-System#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.15.1"
+  }
+}

@@ -87,6 +87,54 @@ app.get('/viewKpi', async (req, res) => {
   }
 });
 
+// GET route to render the KPI update form
+app.get('/updateKpi/:id', async (req, res) => {
+  const kpiId = req.params.id;
+
+  try {
+    // Fetch the KPI detail from your database based on ID
+    const kpi = await KPI.findById(kpiId); // replace with your actual model and query
+
+    // Ensure user is logged in
+    if (!req.session.user) {
+      return res.redirect('/login'); // or wherever your login page is
+    }
+
+    if (!kpi) {
+      return res.status(404).send('KPI not found');
+    }
+
+    // Render the EJS file with the KPI data
+    res.render('staffKpiUpdate', { kpi });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
+
+// POST route to handle the update of KPI
+app.post('/updateKpi/:id', async (req, res) => {
+  const kpiId = req.params.id;
+  const { progressInput, progressNote, fileNote } = req.body;
+
+  try {
+    await KpiModel.findByIdAndUpdate(kpiId, {
+      $set: {
+        progress: progressInput,
+        progressNote: progressNote,
+        fileNote: fileNote,
+        // optionally: fileUpload handling via multer or similar
+      }
+    });
+
+    res.redirect('/viewKpi'); // or wherever you want to redirect after update
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Update failed');
+  }
+});
+
+
 // GET route to handle invalid request or route path using an asterisk (*)  wildcard
 // Placing this route as the last route
 app.get(/(.*)/, (req, res) => {

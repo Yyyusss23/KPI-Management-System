@@ -79,13 +79,13 @@
       </nav>
 
 <%
-function getApprovalBadgeClass(status) {
+function getStatusBadgeClass(status) {
   switch (status) {
-    case "Pending Approval":
+    case "In Progress":
       return "bg-warning text-dark";
-    case "Approved":
+    case "Completed":
       return "bg-success text-light";
-    case "No New Progress":
+    case "Not Started":
       return "bg-secondary text-light";
     case "Rejected":
       return "bg-danger text-light";
@@ -127,40 +127,73 @@ function getApprovalBadgeClass(status) {
           <!-- Chart.js CDN -->
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-          <script>
-            const ctx = document
-              .getElementById("kpiProgressChart")
-              .getContext("2d");
-            const kpiProgressChart = new Chart(ctx, {
-              type: "doughnut",
-              data: {
-                labels: ["Completed", "In Progress", "Not Started"],
-                datasets: [
-                  {
-                    data: [59.12, 20.88, 20], // 59.12% completed example
-                    backgroundColor: ["#28a745", "#ffc107", "#dee2e6"],
-                    borderWidth: 1,
-                  },
-                ],
-              },
-              options: {
-                cutout: "70%",
-                plugins: {
-                  legend: {
-                    display: true,
-                    position: "bottom",
-                  },
-                  tooltip: {
-                    callbacks: {
-                      label: function (context) {
-                        return context.label + ": " + context.raw + "%";
-                      },
-                    },
-                  },
-                },
-              },
-            });
+          <canvas id="kpiProgressChart"></canvas>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Extract KPI status counts from EJS
+  const kpis = <%- JSON.stringify(kpis) %>;
+
+  const total = kpis.length || 1; // avoid division by zero
+
+  let completedCount = 0;
+  let inProgressCount = 0;
+  let notStartedCount = 0;
+
+  kpis.forEach(kpi => {
+    switch (kpi.status) {
+      case 'Completed':
+        completedCount++;
+        break;
+      case 'In Progress':
+        inProgressCount++;
+        break;
+      case 'Not Started':
+        notStartedCount++;
+        break;
+    }
+  });
+
+  // Calculate percentages
+  const completedPercentage = ((completedCount / total) * 100).toFixed(2);
+  const inProgressPercentage = ((inProgressCount / total) * 100).toFixed(2);
+  const notStartedPercentage = ((notStartedCount / total) * 100).toFixed(2);
+
+  const ctx = document.getElementById("kpiProgressChart").getContext("2d");
+
+  const kpiProgressChart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Completed", "In Progress", "Not Started"],
+      datasets: [
+        {
+          data: [
+            completedPercentage,
+            inProgressPercentage,
+            notStartedPercentage
+          ],
+          backgroundColor: ["#28a745", "#ffc107", "#dee2e6", "#6c757d"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      cutout: "70%",
+      plugins: {
+        legend: {
+          display: true,
+          position: "bottom",
+        },
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              return context.label + ": " + context.raw + "%";
+            },
+          },
+        },
+      },
+    },
+  });
             // Area Chart
             const areaCtx = document
               .getElementById("kpiAreaChart")
@@ -314,7 +347,7 @@ function getApprovalBadgeClass(status) {
     <p>No KPIs assigned to you.</p>
   <% } else { %>
     <% kpis.forEach(kpi => { 
-      const completion = `${kpi.progress}%`;
+      let completion = (kpi.targetNumber > 0) ? ((kpi.progressNumber / kpi.targetNumber) * 100).toFixed(2) : 0;
     %>
       <div class="col">
         <div class="card h-100 shadow-sm custom-kpi-card">
@@ -327,34 +360,34 @@ function getApprovalBadgeClass(status) {
             </h5>
 
             <p class="mb-3"><strong>Target:</strong> <%= kpi.target %></p>
-            <p class="mb-3"><strong>Progress:</strong> <%= kpi.progress %>%</p>
-            <p class="mb-3"><strong>Status:</strong> <%= kpi.status %></p>
+            <p class="mb-3"><strong>Progress:</strong> <%= kpi.progress %></p>
+            <p class="mb-3"><strong>Due Date:</strong> <%= kpi.dueDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) %></p>
+            <p class="mb-3"><strong>Approval Status:</strong> <%= kpi.approvalstat %></p>
 
             <div class="mb-3">
-              <strong>Approval Status:</strong>
-              <span class="badge <%= getApprovalBadgeClass(kpi.approvalstat) %>">
-                <%= kpi.approvalstat %>
+              <strong>Status:</strong>
+              <span class="badge <%= getStatusBadgeClass(kpi.status) %>">
+                <%= kpi.status %>
               </span>
             </div>
 
             <div class="mb-4">
-              <p class="mb-2"><strong>Percentage Completion:</strong> <%= completion %></p>
+              <p class="mb-2"><strong>Percentage Completion:</strong> <%= completion %>%</p>
               <div class="progress" style="height: 20px">
                 <div
                   class="progress-bar btn-success"
                   role="progressbar"
-                  style="width: <%= kpi.progress %>%"
+                  style="width: <%= completion %>%"
                   aria-valuenow="<%= parseFloat(kpi.progress) %>"
                   aria-valuemin="0"
                   aria-valuemax="100"
                 >
-                  <%= kpi.progress %>%
                 </div>
               </div>
             </div>
 
             <div class="mt-auto text-end">
-              <a href="/staff/kpi-detail/<%= kpi._id %>" class="btn btn-warning btn-sm">Update Progress</a>
+              <a href="/updateKpi/<%= kpi._id %>" class="btn btn-warning btn-sm">Update Progress</a>
             </div>
 
           </div>

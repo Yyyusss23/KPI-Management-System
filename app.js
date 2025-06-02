@@ -1,63 +1,99 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const session = require('express-session');
-const path = require('path');
-
 const app = express();
+const session = require('express-session');
+const mongoose = require('mongoose');
+const path = require('path');
+const port = 3000;
 
-// Middleware
-app.use(express.urlencoded({ extended: true }));
+const User = require('./models/User'); // your User mongoose model
+const KPI = require('./models/staff-kpi'); // your KPI mongoose model
+
+// Serve static files from 'public' or 'styles' folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
 
 // Session setup
-app.use(
-  session({
-    secret: 'mySecretKey123',
-    resave: false,
-    saveUninitialized: false
-  })
-);
+app.use(session({
+  secret: 'mySecret',
+  resave: false,
+  saveUninitialized: false
+}));
 
-// MongoDB connection
-mongoose.connect('mongodb://127.0.0.1:27017/kpi-management', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err));
+// Connect DB
+mongoose.connect('mongodb://localhost:27017/kpi_system');
 
-// Routes
-const authRoutes = require('./routes/auth');
-const kpiRoutes = require('./routes/kpis');
-
-app.use('/', authRoutes);
-app.use('/kpis', kpiRoutes);
-
-// Home Route Redirect
-app.get('/', (req, res) => {
-  if (!req.session.user) {
-    return res.redirect('/login');
-  }
-  res.redirect('/dashboard');
+// Login form route
+app.get('/login', (req, res) => {
+  res.render('login');
 });
 
-// Dashboard Route (renders based on role)
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email, password });
+  console.log('Found user:', user);
+
+  if (user) {
+    req.session.user = {
+      _id: user._id,
+      email: user.email,
+      role: user.role,
+      name: user.name
+    };
+    res.redirect('/dashboard');
+  } else {
+    res.send('Login failed');
+  }
+});
+
 app.get('/dashboard', (req, res) => {
   if (!req.session.user) {
     return res.redirect('/login');
   }
-  res.render('dashboard', { user: req.session.user });
+
+  const user = req.session.user;  // grab the whole user session
+  console.log('User session:', user);
+
+  if (user.role === 'manager') {
+    res.render('managerDashboard', { user });
+  } else if (user.role === 'staff') {
+    res.render('staffDashboard', { user });
+  } else {
+    res.send('Unauthorized');
+  }
 });
 
-// Logout Route
-app.get('/logout', (req, res) => {
-  req.session.destroy(err => {
-    if (err) console.log(err);
-    res.redirect('/login');
-  });
+app.get('/viewKpi', async (req, res) => {
+  try {
+    // Ensure user is logged in
+    if (!req.session.user) {
+      return res.redirect('/login'); // or wherever your login page is
+    }
+
+    // Get logged-in user's _id
+    const userId = req.session.user._id;
+
+    // Fetch KPIs assigned to this user
+    const kpis = await KPI.find({ assignedTo: userId });
+
+    // Render EJS and pass KPI data
+    res.render('staffKpiView', { kpis });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
 });
 
-// Server
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+// GET route to handle invalid request or route path using an asterisk (*)  wildcard
+// Placing this route as the last route
+app.get(/(.*)/, (req, res) => {
+    res.status(404).send('Sorry, Page Not Found!')
+})
+
+// This app starts a server and listens on port 3000 for connections. 
+app.listen(port, () => {
+    console.log(`Server has started and App is listening on port ${port}`)
+  })

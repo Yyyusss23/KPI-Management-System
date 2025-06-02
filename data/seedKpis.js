@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
-const Kpi = require('./models/staff-kpi'); // assuming you have Kpi model
+const Kpi = require('../models/staff-kpi'); // assuming you have Kpi model
 
-mongoose.connect('mongodb://localhost:27017/kpi_system', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoose.connect('mongodb://localhost:27017/kpi_system');
 
 const kpis = [
   {
@@ -14,8 +11,8 @@ const kpis = [
     progress: 40,
     dueDate: new Date("2025-06-30"),
     status: "In Progress",
-    approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b1")
+    approvalstat: "Approved",
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b1")
   },
   {
     title: "Launch Email Campaign",
@@ -25,7 +22,7 @@ const kpis = [
     dueDate: new Date("2025-06-25"),
     status: "In Progress",
     approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b1")
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b1")
   },
   {
     title: "Publish 5 Blog Articles",
@@ -35,7 +32,7 @@ const kpis = [
     dueDate: new Date("2025-06-20"),
     status: "Completed",
     approvalstat: "Approved",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b1")
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b1")
   },
   {
     title: "Conduct User Feedback Survey",
@@ -43,9 +40,9 @@ const kpis = [
     target: "100 responses",
     progress: 85,
     dueDate: new Date("2025-06-28"),
-    status: "In Progress",
-    approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b1")
+    status: "Not Started",
+    approvalstat: "Rejected",
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b1")
   },
   {
     title: "Boost Social Media Followers",
@@ -55,7 +52,7 @@ const kpis = [
     dueDate: new Date("2025-06-30"),
     status: "In Progress",
     approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b2")
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b2")
   },
   {
     title: "Design New Promotional Banner",
@@ -63,19 +60,19 @@ const kpis = [
     target: "3 banners",
     progress: 30,
     dueDate: new Date("2025-06-18"),
-    status: "In Progress",
-    approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b2")
+    status: "Not Started",
+    approvalstat: "No New Progress",
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b2")
   },
   {
     title: "Update Product Brochures",
     description: "Revise brochures for top 5 products.",
     target: "5 updated brochures",
-    progress: 90,
+    progress: 100,
     dueDate: new Date("2025-06-24"),
-    status: "Pending Approval",
-    approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b2")
+    status: "Completed",
+    approvalstat: "Approved",
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b2")
   },
   {
     title: "Plan Q3 Marketing Strategy",
@@ -85,7 +82,7 @@ const kpis = [
     dueDate: new Date("2025-06-29"),
     status: "In Progress",
     approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b2")
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b2")
   },
   {
     title: "Deploy System Update v2.0",
@@ -94,8 +91,8 @@ const kpis = [
     progress: 80,
     dueDate: new Date("2025-06-26"),
     status: "In Progress",
-    approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3")
+    approvalstat: "Approved",
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3")
   },
   {
     title: "Prepare System Documentation",
@@ -104,8 +101,8 @@ const kpis = [
     progress: 60,
     dueDate: new Date("2025-06-28"),
     status: "In Progress",
-    approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3")
+    approvalstat: "Approved",
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3")
   },
   {
     title: "Optimize Server Performance",
@@ -115,7 +112,7 @@ const kpis = [
     dueDate: new Date("2025-06-25"),
     status: "In Progress",
     approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3")
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3")
   },
   {
     title: "Conduct System Security Audit",
@@ -124,8 +121,8 @@ const kpis = [
     progress: 20,
     dueDate: new Date("2025-06-30"),
     status: "Not Started",
-    approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3")
+    approvalstat: "No New Progress",
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3")
   },
   {
     title: "Fix Reported System Bugs",
@@ -134,8 +131,8 @@ const kpis = [
     progress: 75,
     dueDate: new Date("2025-06-22"),
     status: "In Progress",
-    approvalstat: "Pending Approval",
-    assignedTo: mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3")
+    approvalstat: "No New Progress",
+    assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3")
   }
 ];
 

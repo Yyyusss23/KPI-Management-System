@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const port = 3000;
 
-const User = require('./models/User'); // User mongoose model
+const User = require('./models/user'); // User mongoose model
 const KPI = require('./models/kpi'); // KPI mongoose model
 
 // Serve static files from 'public' or 'styles' folder
@@ -69,12 +69,14 @@ app.get('/dashboard', (req, res) => {
   }
 });
 
-// kpi routes
+// Staff KPI routes
 const kpiStaffRoutes = require('./routes/kpi-staff');
 app.use('/kpi', kpiStaffRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-//manager routes
+// --- Manager Routes ---
+const managerRoutes = require('./routes/manager'); // <--- ADD THIS LINE
+app.use('/manager', managerRoutes);                 // <--- ADD THIS LINE
 
 // GET route to handle invalid request or route path using an asterisk (*)  wildcard
 // Placing this route as the last route

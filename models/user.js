@@ -11,4 +11,8 @@ const userSchema = new mongoose.Schema({
   department: { type: String, enum: ['Sales & Marketing', 'HR & Admin', 'IT', 'Customer Service', 'Account & Finance'], default: true },
 });
 
-module.exports = mongoose.model('User', userSchema);
+// Check if the 'User' model already exists in Mongoose's models.
+// If it does, use the existing model; otherwise, compile and use the new one.
+const User = mongoose.models.User || mongoose.model('User', userSchema);
+
+module.exports = User;

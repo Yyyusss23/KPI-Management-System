@@ -233,7 +233,6 @@
           kpiCardsContainer.appendChild(card);
         });
       }
-
       // Filter logic
       function applyFilters() {
         const staff = filterStaff.value.toLowerCase();
@@ -242,9 +241,11 @@
 
         // Filter the `allKpis` array that came from the server
         const filtered = allKpis.filter((kpi) =>
-          (staff === "" || kpi.staffName.toLowerCase().includes(staff)) &&
-          (department === "" || kpi.department.toLowerCase().includes(department)) &&
-          (status === "" || kpi.approvalstat.toLowerCase().includes(status)) // Filter by approvalstat
+          // Corrected: Access staff name via kpi.assignedTo.name
+          (staff === "" || kpi.assignedTo?.name?.toLowerCase().includes(staff)) &&
+          // Corrected: Access department via kpi.assignedTo.department
+          (department === "" || kpi.assignedTo?.department?.toLowerCase().includes(department)) &&
+          (status === "" || kpi.approvalstat?.toLowerCase().includes(status))
         );
 
         renderCards(filtered);

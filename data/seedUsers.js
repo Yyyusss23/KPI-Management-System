@@ -27,7 +27,7 @@ const users = [
   {
     _id: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b1"),
     companyId: "STF-9001",
-    name: "Charlie Staff",
+    name: "Charlie Puth",
     email: "charlie.staff@example.com",
     password: "123",
     role: "staff",
@@ -37,7 +37,7 @@ const users = [
   {
     _id: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b2"),
     companyId: "STF-9002",
-    name: "Diana Staff",
+    name: "Diana Rizq",
     email: "diana.staff@example.com",
     password: "123",
     role: "staff",
@@ -47,7 +47,7 @@ const users = [
   {
     _id: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b3"),
     companyId: "STF-9003",
-    name: "Ethan Staff",
+    name: "Ethan Michael",
     email: "ethan.staff@example.com",
     password: "123",
     role: "staff",

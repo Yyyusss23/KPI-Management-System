@@ -209,8 +209,8 @@
                     </a>
                   </h5>
                   <p class="card-text"><strong>Description:</strong> ${kpi.description || 'N/A'}</p>
-                  <p class="card-text"><strong>Staff:</strong> ${kpi.staffName || 'N/A'}</p>
-                  <p class="card-text"><strong>Department:</strong> ${kpi.department || 'N/A'}</p>
+                  <p class="card-text"><strong>Staff:</strong> ${kpi.assignedTo?.name || 'N/A'}</p>
+                  <p class="card-text"><strong>Department:</strong> ${kpi.assignedTo?.department || 'N/A'}</p>
                   <p class="card-text"><strong>Target:</strong> ${kpi.targetValue || 'N/A'}</p>
                   <p class="card-text"><strong>Due Date:</strong> ${formattedDueDate}</p>
                   <p class="card-text"><strong>Indicators:</strong> ${kpi.target || 'N/A'}</p>

@@ -5,14 +5,17 @@ const mongoose = require('mongoose');
 const path = require('path');
 const port = 3000;
 
-const User = require('./models/User'); // your User mongoose model
-const KPI = require('./models/staff-kpi'); // your KPI mongoose model
+const User = require('./models/User'); // User mongoose model
+const KPI = require('./models/kpi'); // KPI mongoose model
 
 // Serve static files from 'public' or 'styles' folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Middleware to parse URL-encoded bodies and JSON bodies
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Set view engine to EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
@@ -58,82 +61,20 @@ app.get('/dashboard', (req, res) => {
   console.log('User session:', user);
 
   if (user.role === 'manager') {
-    res.render('managerDashboard', { user });
+    res.render('dashboard-manager', { user });
   } else if (user.role === 'staff') {
-    res.render('staffDashboard', { user });
+    res.render('dashboard-staff', { user });
   } else {
     res.send('Unauthorized');
   }
 });
 
-app.get('/viewKpi', async (req, res) => {
-  try {
-    // Ensure user is logged in
-    if (!req.session.user) {
-      return res.redirect('/login'); // or wherever your login page is
-    }
+// kpi routes
+const kpiStaffRoutes = require('./routes/kpi-staff');
+app.use('/kpi', kpiStaffRoutes);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-    // Get logged-in user's _id
-    const userId = req.session.user._id;
-
-    // Fetch KPIs assigned to this user
-    const kpis = await KPI.find({ assignedTo: userId });
-
-    // Render EJS and pass KPI data
-    res.render('staffKpiView', { kpis });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Server Error');
-  }
-});
-
-// GET route to render the KPI update form
-app.get('/updateKpi/:id', async (req, res) => {
-  const kpiId = req.params.id;
-
-  try {
-    // Fetch the KPI detail from your database based on ID
-    const kpi = await KPI.findById(kpiId); // replace with your actual model and query
-
-    // Ensure user is logged in
-    if (!req.session.user) {
-      return res.redirect('/login'); // or wherever your login page is
-    }
-
-    if (!kpi) {
-      return res.status(404).send('KPI not found');
-    }
-
-    // Render the EJS file with the KPI data
-    res.render('staffKpiUpdate', { kpi });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Server error');
-  }
-});
-
-// POST route to handle the update of KPI
-app.post('/updateKpi/:id', async (req, res) => {
-  const kpiId = req.params.id;
-  const { progressInput, progressNote, fileNote } = req.body;
-
-  try {
-    await KpiModel.findByIdAndUpdate(kpiId, {
-      $set: {
-        progress: progressInput,
-        progressNote: progressNote,
-        fileNote: fileNote,
-        // optionally: fileUpload handling via multer or similar
-      }
-    });
-
-    res.redirect('/viewKpi'); // or wherever you want to redirect after update
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Update failed');
-  }
-});
-
+//manager routes
 
 // GET route to handle invalid request or route path using an asterisk (*)  wildcard
 // Placing this route as the last route

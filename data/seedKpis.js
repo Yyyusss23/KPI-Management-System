@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Kpi = require('../models/staff-kpi'); // assuming you have Kpi model
+const Kpi = require('../models/kpi'); // assuming you have Kpi model
 
 mongoose.connect('mongodb://localhost:27017/kpi_system');
 
@@ -213,7 +213,6 @@ const kpis = [
     assignedTo: new mongoose.Types.ObjectId("6659fa9fb6e1c2cf81e362b1")
   },
 
-  // User: 6659fa9fb6e1c2cf81e362b2
   {
     title: "Improve Customer Retention",
     description: "Reduce churn rate by 5%.",
@@ -246,7 +245,7 @@ const kpis = [
     target: "500 responses",
     targetNumber: 500,
     progress: "300 responses",
-    progressNumber: 300,
+    progressNumber: 500,
     startDate: new Date("2025-06-05"),
     dueDate: new Date("2025-06-20"),
     status: "Completed",
@@ -257,9 +256,9 @@ const kpis = [
     title: "Create Monthly Newsletter",
     description: "Publish June edition of the newsletter.",
     target: "1 edition",
-    targetNumber: 1,
+    targetNumber: 100,
     progress: "Draft completed",
-    progressNumber: 0,
+    progressNumber: 30,
     startDate: new Date("2025-06-01"),
     dueDate: new Date("2025-06-15"),
     status: "In Progress",

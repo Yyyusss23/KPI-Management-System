@@ -69,22 +69,48 @@ app.get('/dashboard', (req, res) => {
   }
 });
 
+// New API endpoint to get KPI data in JSON for frontend fetch
+app.get('/api/kpis', async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const user = req.session.user;
+
+    let kpis;
+
+    if (user.role === 'manager') {
+      // Manager can see all KPIs
+      kpis = await KPI.find({}).populate('assignedTo');
+    } else if (user.role === 'staff') {
+      // Staff sees only their KPIs
+      kpis = await KPI.find({ assignedTo: user._id }).populate('assignedTo');
+    } else {
+      return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    res.json(kpis);
+  } catch (error) {
+    console.error('Error fetching KPIs:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 // Staff KPI routes
 const kpiStaffRoutes = require('./routes/kpi-staff');
 app.use('/kpi', kpiStaffRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// --- Manager Routes ---
-const managerRoutes = require('./routes/manager'); // <--- ADD THIS LINE
-app.use('/manager', managerRoutes);                 // <--- ADD THIS LINE
+// Manager Routes
+const managerRoutes = require('./routes/manager');
+app.use('/manager', managerRoutes);
 
-// GET route to handle invalid request or route path using an asterisk (*)  wildcard
-// Placing this route as the last route
+// Catch all route for 404
 app.get(/(.*)/, (req, res) => {
-    res.status(404).send('Sorry, Page Not Found!')
-})
+  res.status(404).send('Sorry, Page Not Found!');
+});
 
-// This app starts a server and listens on port 3000 for connections. 
 app.listen(port, () => {
-    console.log(`Server has started and App is listening on port ${port}`)
-  })
+  console.log(`Server has started and App is listening on port ${port}`);
+});
